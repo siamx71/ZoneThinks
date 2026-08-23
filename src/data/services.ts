@@ -1,0 +1,247 @@
+export interface ServiceItem {
+  id: string;
+  slug: string;
+  title: string;
+  shortDesc: string;
+  fullDesc: string;
+  iconName: string;
+  accentColor: string;
+  technologies: string[];
+  deliverables: string[];
+  keyBenefits: string[];
+  timeline: string;
+}
+
+export const servicesData: ServiceItem[] = [
+  {
+    id: "web-dev",
+    slug: "web-development",
+    title: "Web Development",
+    shortDesc: "Custom modern websites engineered for extreme performance, security, and enterprise scalability.",
+    fullDesc: "We build high-octane, bespoke web solutions that merge breathtaking visual aesthetics with resilient technical architecture. From corporate enterprise platforms to dynamic web portals, every site is crafted with responsive layouts, modern code standards, and seamless content management.",
+    iconName: "Globe",
+    accentColor: "from-brand-cyan to-brand-blue",
+    technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Node.js", "PostgreSQL"],
+    deliverables: [
+      "Custom Architecture & Core Component Library",
+      "Full Responsive Implementation for all devices",
+      "Headless CMS Integration (Sanity / Strapi / Contentful)",
+      "Technical SEO & Core Web Vitals Optimization",
+      "Speed Performance Tuning (Sub-1s loads)",
+      "Automated CI/CD Deployment Pipeline"
+    ],
+    keyBenefits: [
+      "99.9% Uptime and rock-solid architecture",
+      "Sub-second load times improving SEO and conversion",
+      "Modular components for rapid future expansion"
+    ],
+    timeline: "3 - 6 Weeks"
+  },
+  {
+    id: "frontend-dev",
+    slug: "frontend-development",
+    title: "Frontend Development",
+    shortDesc: "React, Next.js, modern UI design systems and fluid interactive web experiences.",
+    fullDesc: "Our frontend engineering translates complex product specifications into intuitive, silky-smooth, and responsive digital interfaces. We specialize in component-driven development, state management, complex micro-interactions, and accessible UI.",
+    iconName: "Layout",
+    accentColor: "from-brand-blue to-brand-purple",
+    technologies: ["React 19", "Next.js 15", "TypeScript", "Framer Motion", "Tailwind CSS", "Zustand"],
+    deliverables: [
+      "Component-Driven UI System",
+      "Complex Fluid Animations & Micro-Interactions",
+      "State Management & Real-Time Sync",
+      "WCAG 2.1 AA Accessibility Compliance",
+      "Lighthouse 95+ Performance Scores"
+    ],
+    keyBenefits: [
+      "Fluid 60fps micro-animations that captivate users",
+      "Accessible and compliant across global standards",
+      "Zero layout shifts and instantaneous page transitions"
+    ],
+    timeline: "2 - 5 Weeks"
+  },
+  {
+    id: "backend-dev",
+    slug: "backend-development",
+    title: "Backend Development",
+    shortDesc: "Scalable cloud APIs, robust database architectures, and secure serverless microservices.",
+    fullDesc: "We engineer resilient backends capable of powering millions of requests per day. We build high-throughput REST and GraphQL APIs, integrate third-party payment systems, handle asynchronous queues, and structure robust relational and NoSQL databases.",
+    iconName: "Server",
+    accentColor: "from-brand-purple to-brand-violet",
+    technologies: ["Node.js", "Express", "NestJS", "PostgreSQL", "Redis", "GraphQL", "AWS"],
+    deliverables: [
+      "High-Performance REST / GraphQL API Architecture",
+      "Database Schema Design & Query Optimization",
+      "Authentication & Multi-Tenant Authorization",
+      "Redis Caching & Queue Management",
+      "Comprehensive Swagger / OpenAPI Documentation"
+    ],
+    keyBenefits: [
+      "Effortless vertical and horizontal scalability",
+      "Bank-grade encryption and security practices",
+      "Detailed API documentation for smooth team onboarding"
+    ],
+    timeline: "4 - 8 Weeks"
+  },
+  {
+    id: "ecommerce-dev",
+    slug: "ecommerce-development",
+    title: "E-Commerce Development",
+    shortDesc: "High-converting online storefronts, headless commerce, and frictionless shopping experiences.",
+    fullDesc: "Turn visitors into repeat buyers with lightning-fast, high-conversion e-commerce engines. We build headless Shopify solutions, custom checkout funnels, ERP integrations, and subscription billing systems engineered for maximum checkout completion.",
+    iconName: "ShoppingBag",
+    accentColor: "from-brand-emerald to-brand-cyan",
+    technologies: ["Shopify Plus", "Next.js Commerce", "Stripe", "Medusa.js", "Tailwind CSS", "Algolia"],
+    deliverables: [
+      "Headless Storefront Architecture",
+      "Stripe & Multi-Currency Payment Integrations",
+      "Real-time Inventory & Shipping Sync",
+      "Optimized 1-Click Checkout Funnels",
+      "Abandoned Cart & Retention Integrations"
+    ],
+    keyBenefits: [
+      "Up to 40% increase in checkout conversions",
+      "Ultra-fast product filtering and instant search",
+      "Complete localization for international markets"
+    ],
+    timeline: "4 - 7 Weeks"
+  },
+  {
+    id: "uiux-design",
+    slug: "ui-ux-design",
+    title: "UI/UX Design",
+    shortDesc: "Modern, research-backed interface design focused on seamless usability and brand prestige.",
+    fullDesc: "We create digital designs that make a memorable impression while driving key business metrics. Our process combines user journey mapping, interactive Figma prototypes, usability testing, and comprehensive design token systems ready for development.",
+    iconName: "Palette",
+    accentColor: "from-brand-rose to-brand-purple",
+    technologies: ["Figma", "Design Tokens", "Wireframing", "User Journey Mapping", "Usability Testing"],
+    deliverables: [
+      "End-to-End Figma Design System & Tokens",
+      "Interactive High-Fidelity Clickable Prototypes",
+      "User Persona & Customer Journey Maps",
+      "Custom Vector Illustrations & Iconography",
+      "Detailed Developer Handoff Documentation"
+    ],
+    keyBenefits: [
+      "Distinct brand identity that outshines competitors",
+      "Frictionless user flow minimizing churn",
+      "Seamless bridge between design vision and engineered code"
+    ],
+    timeline: "2 - 4 Weeks"
+  },
+  {
+    id: "saas-dev",
+    slug: "saas-development",
+    title: "SaaS Product Development",
+    shortDesc: "Complete end-to-end SaaS platforms from conceptual architecture to launch and scale.",
+    fullDesc: "We turn complex business workflows into scalable software-as-a-service applications. We handle multi-tenancy, subscription tiers, role-based access control, analytics dashboards, and billing infrastructure so you can focus on customer acquisition.",
+    iconName: "Layers",
+    accentColor: "from-brand-cyan to-brand-emerald",
+    technologies: ["Next.js", "PostgreSQL", "Stripe Billing", "Prisma", "Docker", "AWS", "Vercel"],
+    deliverables: [
+      "Multi-Tenant User Management & RBAC",
+      "Subscription Billing & Invoicing Engine (Stripe)",
+      "Interactive Real-Time Analytics & Reporting Dashboard",
+      "Admin Backoffice & Customer Support Portals",
+      "Security Auditing & Penetration Testing Ready"
+    ],
+    keyBenefits: [
+      "Accelerated time-to-market by 2x-3x",
+      "Built for enterprise SOC2 / GDPR compliance readiness",
+      "Frictionless onboarding flows to boost activation rates"
+    ],
+    timeline: "6 - 12 Weeks"
+  },
+  {
+    id: "redesign",
+    slug: "website-redesign",
+    title: "Website Redesign & Modernization",
+    shortDesc: "Transform dated legacy platforms into modern, hyper-responsive digital experiences.",
+    fullDesc: "If your current web presence looks outdated, runs slowly, or fails to convert, our modernization process preserves your search engine rankings while giving your brand a sleek modern aesthetic and cutting-edge tech stack.",
+    iconName: "Sparkles",
+    accentColor: "from-brand-amber to-brand-rose",
+    technologies: ["React", "Next.js", "Tailwind CSS", "SEO Migration", "Speed Optimization"],
+    deliverables: [
+      "Comprehensive UI/UX Audit & Conversion Analysis",
+      "301 Redirect Mapping & SEO Preservation",
+      "Modern Front-End Re-Architecture",
+      "Responsive Layout Upgrade for Modern Screens",
+      "Modern Brand Polish & Visual Elevation"
+    ],
+    keyBenefits: [
+      "Elevated brand credibility and perceived value",
+      "Zero drop in legacy SEO equity",
+      "Drastic reductions in bounce rates"
+    ],
+    timeline: "3 - 5 Weeks"
+  },
+  {
+    id: "api-dev",
+    slug: "api-development",
+    title: "API Development & Integrations",
+    shortDesc: "High-throughput APIs, custom webhook architectures, and seamless third-party CRM integrations.",
+    fullDesc: "We build reliable data pipelines and API architectures that connect your disparate software systems. Whether integrating Salesforce, Stripe, ERP systems, or custom partner endpoints, we ensure zero-loss synchronization.",
+    iconName: "Cpu",
+    accentColor: "from-brand-cyan to-brand-purple",
+    technologies: ["Node.js", "GraphQL", "REST", "Redis", "Kafka", "Webhooks", "Postman"],
+    deliverables: [
+      "Standardized RESTful & GraphQL Endpoints",
+      "Secure OAuth2 & API Key Authentication",
+      "Automated Webhook Dispatch & Retry Queues",
+      "Third-Party SDKs & Developer Portal Setup",
+      "Full Postman Collection & Integration Guides"
+    ],
+    keyBenefits: [
+      "Flawless real-time data sync across enterprise tools",
+      "High concurrency handling thousands of events/sec",
+      "Self-documenting APIs ready for partner integrations"
+    ],
+    timeline: "3 - 6 Weeks"
+  },
+  {
+    id: "performance-opt",
+    slug: "performance-optimization",
+    title: "Performance Optimization & Core Web Vitals",
+    shortDesc: "Lightning-speed speed audits, bundle tree-shaking, and sub-second Lighthouse scores.",
+    fullDesc: "Speed directly impacts search ranking and revenue conversion. We diagnose code bottlenecks, optimize render trees, implement edge caching, compress assets, and guarantee 95+ Google Lighthouse scores across all device types.",
+    iconName: "Zap",
+    accentColor: "from-brand-emerald to-brand-blue",
+    technologies: ["Next.js Edge", "Cloudflare", "Lighthouse", "Web Workers", "Image CDN", "Bundle Analyzer"],
+    deliverables: [
+      "Comprehensive Speed & Core Web Vitals Audit",
+      "Bundle Size Reduction & Code Splitting",
+      "Server-Side Rendering & Edge Caching Setup",
+      "Image & Font Asset Loading Optimization",
+      "Before/After Benchmark & Analytics Report"
+    ],
+    keyBenefits: [
+      "Sub-second Largest Contentful Paint (LCP < 1.2s)",
+      "Drastic boost in Google organic search rank",
+      "Proven 15-30% increase in checkout and lead conversion"
+    ],
+    timeline: "1 - 3 Weeks"
+  },
+  {
+    id: "maintenance-support",
+    slug: "maintenance-and-support",
+    title: "Maintenance & Continuous Support",
+    shortDesc: "Proactive security patching, uptime monitoring, speed audits, and continuous feature sprints.",
+    fullDesc: "Digital excellence doesn't stop at launch. Our dedicated engineering support retainer provides proactive vulnerability patches, database tuning, infrastructure monitoring, automated backups, and monthly development sprints.",
+    iconName: "ShieldCheck",
+    accentColor: "from-brand-cyan to-brand-purple",
+    technologies: ["Sentry", "Datadog", "GitHub Actions", "Docker", "AWS CloudWatch"],
+    deliverables: [
+      "24/7 Uptime & Server Health Monitoring",
+      "Security Updates & Dependency Patching",
+      "Continuous Speed & Core Web Vitals Audits",
+      "Monthly Feature Enhancements & Bug Fixes",
+      "Dedicated Slack Channel & SLA Support"
+    ],
+    keyBenefits: [
+      "Peace of mind with guaranteed response times",
+      "Continuous optimization keeping you ahead of competitors",
+      "Predictable engineering bandwidth without hiring overhead"
+    ],
+    timeline: "Ongoing Retainer"
+  }
+];

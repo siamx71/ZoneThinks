@@ -1,0 +1,188 @@
+export interface JobPosition {
+  id: string;
+  slug: string;
+  title: string;
+  department: 'Engineering' | 'Design' | 'Product & Project' | 'Operations';
+  location: string;
+  type: 'Full-time' | 'Contract' | 'Internship';
+  experienceLevel: 'Senior' | 'Mid-Level' | 'Lead' | 'Intern';
+  salaryRange: string;
+  overview: string;
+  responsibilities: string[];
+  requirements: string[];
+  perks: string[];
+}
+
+export const careerPerks = [
+  {
+    icon: "Globe",
+    title: "100% Remote-First",
+    desc: "Work from anywhere on Earth with flexible schedules and asynchronous workflows."
+  },
+  {
+    icon: "DollarSign",
+    title: "Top-Tier Compensation",
+    desc: "Competitive Silicon Valley benchmark salaries, bonus incentives, and profit sharing."
+  },
+  {
+    icon: "Laptop",
+    title: "Hardware & Tech Stipend",
+    desc: "Top-spec MacBook Pro M3 Max, 4K monitors, and an ergonomic home office budget."
+  },
+  {
+    icon: "BookOpen",
+    title: "Learning & Conference Fund",
+    desc: "$3,000 annual budget for workshops, books, courses, and global design & tech conferences."
+  },
+  {
+    icon: "Heart",
+    title: "Comprehensive Health & Wellness",
+    desc: "Full medical, dental, and vision coverage plus monthly wellness/gym stipends."
+  },
+  {
+    icon: "Calendar",
+    title: "Unlimited Paid Time Off",
+    desc: "Mandatory minimum 4 weeks off per year to recharge and stay inspired."
+  }
+];
+
+export const openPositions: JobPosition[] = [
+  {
+    id: "lead-frontend-engineer",
+    slug: "lead-frontend-engineer",
+    title: "Lead Frontend Engineer (React / Next.js)",
+    department: "Engineering",
+    location: "Remote (Global / Americas / EMEA)",
+    type: "Full-time",
+    experienceLevel: "Lead",
+    salaryRange: "$140,000 - $180,000 + Equity",
+    overview: "We're looking for a world-class Lead Frontend Engineer who treats web craftsmanship as an art form. You'll architect high-speed web apps, mentor engineers, and build fluid micro-interactions with React 19, TypeScript, and Framer Motion.",
+    responsibilities: [
+      "Lead architecture and technical execution of client web platforms and SaaS products.",
+      "Ensure 60 FPS animation performance and sub-1s load times across all projects.",
+      "Build reusable component libraries and design tokens in tandem with our UI/UX team.",
+      "Participate in technical discovery sessions with enterprise founders and CTOs."
+    ],
+    requirements: [
+      "6+ years building production web applications with React, Next.js, and TypeScript.",
+      "Deep expertise with Framer Motion, GSAP, CSS variables, and modern responsive design.",
+      "Obsession with Core Web Vitals, accessibility (WCAG AA), and bundle optimization.",
+      "Strong written and verbal English communication skills."
+    ],
+    perks: [
+      "MacBook Pro M3 Max + dual 4K displays",
+      "$3,000 annual conference stipend",
+      "Unlimited PTO (min 4 weeks enforced)"
+    ]
+  },
+  {
+    id: "senior-backend-engineer",
+    slug: "senior-backend-engineer",
+    title: "Senior Backend Engineer (Node.js / PostgreSQL)",
+    department: "Engineering",
+    location: "Remote (Global)",
+    type: "Full-time",
+    experienceLevel: "Senior",
+    salaryRange: "$130,000 - $165,000 + Bonus",
+    overview: "Join our backend team building high-throughput APIs, cloud infrastructure, and distributed databases for high-scale enterprise platforms and SaaS startups.",
+    responsibilities: [
+      "Design scalable REST & GraphQL APIs with Node.js, Express, NestJS, or Go.",
+      "Structure high-performance PostgreSQL and Redis database architectures.",
+      "Implement multi-tenant auth (OAuth, JWT, RBAC) and Stripe billing infrastructures.",
+      "Configure automated CI/CD pipelines using GitHub Actions, Docker, and AWS."
+    ],
+    requirements: [
+      "5+ years of production backend engineering experience.",
+      "Mastery of relational database schema design, indexing, and query optimization.",
+      "Experience with cloud architectures (AWS/GCP), serverless, and containerization.",
+      "Track record of shipping secure, scalable production backends."
+    ],
+    perks: [
+      "100% remote flexibility",
+      "Comprehensive global healthcare coverage",
+      "Annual team retreats in destinations like Lisbon and Tokyo"
+    ]
+  },
+  {
+    id: "senior-ui-ux-designer",
+    slug: "senior-ui-ux-designer",
+    title: "Senior UI/UX & Product Designer",
+    department: "Design",
+    location: "Remote (Global)",
+    type: "Full-time",
+    experienceLevel: "Senior",
+    salaryRange: "$120,000 - $155,000",
+    overview: "We're seeking a visionary product designer to create bold, dark-aesthetic design systems, high-converting agency mockups, and intuitive user journeys for global tech brands.",
+    responsibilities: [
+      "Create end-to-end design systems, Figma tokens, and interactive clickable prototypes.",
+      "Collaborate directly with founders and frontend architects to ensure flawless implementation.",
+      "Conduct user research, customer journey mapping, and conversion optimization audits.",
+      "Design custom iconography, 3D elements, and micro-animation specs."
+    ],
+    requirements: [
+      "5+ years designing modern SaaS, web applications, and marketing websites.",
+      "Stunning portfolio showcasing dark aesthetics, typography mastery, and micro-interactions.",
+      "Figma wizard with mastery of auto-layout, component variants, and token variables.",
+      "Understanding of frontend code constraints (HTML/CSS/Tailwind) to design buildable UIs."
+    ],
+    perks: [
+      "Top-tier design workstation & software licenses",
+      "Flexible working hours across timezones",
+      "Direct creative ownership on high-profile global projects"
+    ]
+  },
+  {
+    id: "technical-project-manager",
+    slug: "technical-project-manager",
+    title: "Technical Project & Delivery Manager",
+    department: "Product & Project",
+    location: "Remote (Americas / EMEA)",
+    type: "Full-time",
+    experienceLevel: "Mid-Level",
+    salaryRange: "$95,000 - $125,000",
+    overview: "Orchestrate agile sprints, manage client roadmaps, and ensure world-class delivery across our active digital client engagements.",
+    responsibilities: [
+      "Lead sprint planning, daily standups, and client milestone review meetings.",
+      "Translate high-level client business objectives into crystal-clear engineering tickets.",
+      "Manage project timelines, scope boundaries, and risk mitigation strategies.",
+      "Maintain active communication via dedicated client Slack channels."
+    ],
+    requirements: [
+      "3+ years managing software development or digital agency projects.",
+      "Strong understanding of modern web development workflows (React, APIs, CI/CD).",
+      "Exceptional client-facing communication and stakeholder management skills.",
+      "Experience with Linear, Jira, Notion, and Agile methodologies."
+    ],
+    perks: [
+      "Performance launch bonuses per completed milestone",
+      "Fully remote work culture",
+      "Health & wellness monthly allowance"
+    ]
+  },
+  {
+    id: "frontend-engineering-intern",
+    slug: "frontend-engineering-intern",
+    title: "Frontend Engineering Intern (Paid Summer/Fall)",
+    department: "Engineering",
+    location: "Remote (Global)",
+    type: "Internship",
+    experienceLevel: "Intern",
+    salaryRange: "$35 - $45 / hour",
+    overview: "A paid, high-growth internship for aspiring engineers looking to learn modern React 19, Tailwind CSS, and Framer Motion directly from senior agency architects.",
+    responsibilities: [
+      "Build polished UI components and animations under the mentorship of senior engineers.",
+      "Assist with automated testing, accessibility checks, and performance audits.",
+      "Ship code directly to production for global client platforms."
+    ],
+    requirements: [
+      "Strong foundational knowledge of JavaScript/TypeScript, HTML, and CSS.",
+      "Experience building personal or academic projects with React or Next.js.",
+      "Hunger to learn, attention to visual detail, and enthusiasm for web design."
+    ],
+    perks: [
+      "1-on-1 mentorship with Lead Architects",
+      "Fast-track conversion to full-time engineering role",
+      "Hardware setup provided"
+    ]
+  }
+];

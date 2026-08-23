@@ -1,0 +1,366 @@
+/* ====================================================================
+   ANIMATED AGENCY BACKGROUND SYSTEM (ZoneThinks.IT)
+   Multi-layer GPU-accelerated continuous atmospheric background
+   ==================================================================== */
+
+.agency-bg-root {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  contain: strict;
+  isolation: isolate;
+  background-color: var(--bg-ambient-base-1);
+  transition: background-color 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --------------------------------------------------------------------
+   LAYER 1: BASE GRADIENT
+   -------------------------------------------------------------------- */
+.agency-bg-base {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 15% 15%, var(--bg-ambient-base-2) 0%, transparent 60%),
+              radial-gradient(circle at 85% 85%, var(--bg-ambient-base-3) 0%, transparent 60%),
+              linear-gradient(180deg, var(--bg-ambient-base-1) 0%, var(--bg-ambient-base-2) 50%, var(--bg-ambient-base-3) 100%);
+  opacity: 0.95;
+  transition: background 0.6s ease;
+}
+
+/* --------------------------------------------------------------------
+   LAYER 2: TECH GRID & DOT MATRIX
+   -------------------------------------------------------------------- */
+.agency-bg-grid-wrapper {
+  position: absolute;
+  inset: -100px;
+  width: calc(100% + 200px);
+  height: calc(100% + 200px);
+  overflow: hidden;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 25%, rgba(0, 0, 0, 0.4) 65%, transparent 95%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 25%, rgba(0, 0, 0, 0.4) 65%, transparent 95%);
+}
+
+.agency-bg-grid-lines {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, var(--bg-ambient-grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--bg-ambient-grid) 1px, transparent 1px);
+  background-size: 64px 64px;
+  animation: techGridDrift 50s linear infinite;
+  will-change: transform;
+}
+
+.agency-bg-grid-dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--bg-ambient-grid-dot) 1.25px, transparent 1.25px);
+  background-size: 64px 64px;
+  background-position: -0.5px -0.5px;
+  animation: techGridDrift 50s linear infinite;
+  will-change: transform;
+}
+
+@keyframes techGridDrift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(64px, 64px, 0);
+  }
+}
+
+/* --------------------------------------------------------------------
+   LAYER 3: FLOATING AURORA ORBS
+   -------------------------------------------------------------------- */
+.agency-bg-orbs-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  filter: blur(80px);
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+@supports (filter: blur(100px)) {
+  .agency-bg-orbs-container {
+    filter: blur(110px);
+  }
+}
+
+.agency-bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  mix-blend-mode: normal;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+/* Orb 1: Top-Left (Cyan Glow) */
+.agency-bg-orb-1 {
+  top: -12%;
+  left: -8%;
+  width: 55vw;
+  height: 55vw;
+  max-width: 750px;
+  max-height: 750px;
+  background: radial-gradient(circle, var(--bg-orb-cyan) 0%, rgba(6, 182, 212, 0) 70%);
+  animation: auroraOrbFloat1 22s ease-in-out infinite alternate;
+}
+
+/* Orb 2: Top-Right (Purple Aura) */
+.agency-bg-orb-2 {
+  top: -15%;
+  right: -10%;
+  width: 60vw;
+  height: 60vw;
+  max-width: 800px;
+  max-height: 800px;
+  background: radial-gradient(circle, var(--bg-orb-purple) 0%, rgba(139, 92, 246, 0) 70%);
+  animation: auroraOrbFloat2 28s ease-in-out infinite alternate;
+}
+
+/* Orb 3: Center-Right (Blue Pulse) */
+.agency-bg-orb-3 {
+  top: 35%;
+  right: -5%;
+  width: 50vw;
+  height: 50vw;
+  max-width: 650px;
+  max-height: 650px;
+  background: radial-gradient(circle, var(--bg-orb-blue) 0%, rgba(59, 130, 246, 0) 70%);
+  animation: auroraOrbFloat3 34s ease-in-out infinite alternate;
+}
+
+/* Orb 4: Bottom-Left (Teal/Emerald Touch) */
+.agency-bg-orb-4 {
+  bottom: -15%;
+  left: 5%;
+  width: 48vw;
+  height: 48vw;
+  max-width: 600px;
+  max-height: 600px;
+  background: radial-gradient(circle, var(--bg-orb-teal) 0%, rgba(20, 184, 166, 0) 70%);
+  animation: auroraOrbFloat4 26s ease-in-out infinite alternate;
+}
+
+/* Orb 5: Bottom-Right (Deep Violet Core) */
+.agency-bg-orb-5 {
+  bottom: -18%;
+  right: 15%;
+  width: 52vw;
+  height: 52vw;
+  max-width: 700px;
+  max-height: 700px;
+  background: radial-gradient(circle, var(--bg-orb-violet) 0%, rgba(168, 85, 247, 0) 70%);
+  animation: auroraOrbFloat5 30s ease-in-out infinite alternate;
+}
+
+@keyframes auroraOrbFloat1 {
+  0% {
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+  }
+  50% {
+    transform: translate3d(50px, 40px, 0) scale3d(1.06, 0.96, 1);
+  }
+  100% {
+    transform: translate3d(-30px, 65px, 0) scale3d(0.96, 1.04, 1);
+  }
+}
+
+@keyframes auroraOrbFloat2 {
+  0% {
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+  }
+  50% {
+    transform: translate3d(-45px, 50px, 0) scale3d(1.05, 1.04, 1);
+  }
+  100% {
+    transform: translate3d(35px, -30px, 0) scale3d(0.95, 0.98, 1);
+  }
+}
+
+@keyframes auroraOrbFloat3 {
+  0% {
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+  }
+  50% {
+    transform: translate3d(-60px, -45px, 0) scale3d(0.96, 1.05, 1);
+  }
+  100% {
+    transform: translate3d(40px, 35px, 0) scale3d(1.04, 0.97, 1);
+  }
+}
+
+@keyframes auroraOrbFloat4 {
+  0% {
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+  }
+  50% {
+    transform: translate3d(40px, -55px, 0) scale3d(1.07, 0.95, 1);
+  }
+  100% {
+    transform: translate3d(-45px, 30px, 0) scale3d(0.97, 1.03, 1);
+  }
+}
+
+@keyframes auroraOrbFloat5 {
+  0% {
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+  }
+  50% {
+    transform: translate3d(-50px, -40px, 0) scale3d(1.05, 1.05, 1);
+  }
+  100% {
+    transform: translate3d(30px, 45px, 0) scale3d(0.95, 0.96, 1);
+  }
+}
+
+/* --------------------------------------------------------------------
+   LAYER 4: FLOWING AURORA RIBBONS
+   -------------------------------------------------------------------- */
+.agency-bg-aurora-stream-top {
+  position: absolute;
+  top: -150px;
+  left: 10%;
+  right: 10%;
+  height: 380px;
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  background: linear-gradient(135deg, var(--bg-aurora-glow-1) 0%, transparent 60%, var(--bg-aurora-glow-2) 100%);
+  filter: blur(90px);
+  animation: auroraWaveTop 24s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+.agency-bg-aurora-stream-bottom {
+  position: absolute;
+  bottom: -150px;
+  left: 5%;
+  right: 15%;
+  height: 360px;
+  border-radius: 60% 40% 30% 70% / 50% 60% 40% 50%;
+  background: linear-gradient(225deg, var(--bg-aurora-glow-2) 0%, transparent 60%, var(--bg-aurora-glow-1) 100%);
+  filter: blur(95px);
+  animation: auroraWaveBottom 28s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+@keyframes auroraWaveTop {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate3d(60px, 30px, 0) rotate(2deg) scale(1.08);
+    opacity: 0.95;
+  }
+  100% {
+    transform: translate3d(-50px, 50px, 0) rotate(-2deg) scale(0.96);
+    opacity: 0.75;
+  }
+}
+
+@keyframes auroraWaveBottom {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+    opacity: 0.65;
+  }
+  50% {
+    transform: translate3d(-70px, -35px, 0) rotate(-3deg) scale(1.06);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate3d(55px, -20px, 0) rotate(2deg) scale(0.95);
+    opacity: 0.7;
+  }
+}
+
+/* --------------------------------------------------------------------
+   LAYER 5: AMBIENT LUMINOUS PARTICLES / STARDUST
+   -------------------------------------------------------------------- */
+.agency-bg-sparkles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.agency-bg-sparkle {
+  position: absolute;
+  border-radius: 50%;
+  background-color: var(--color-primary, #00F2FE);
+  box-shadow: 0 0 10px var(--color-primary, #00F2FE);
+  animation: sparklePulse 6s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+@keyframes sparklePulse {
+  0% {
+    opacity: 0.15;
+    transform: translate3d(0, 0, 0) scale(0.8);
+  }
+  50% {
+    opacity: 0.65;
+    transform: translate3d(10px, -15px, 0) scale(1.2);
+  }
+  100% {
+    opacity: 0.2;
+    transform: translate3d(-8px, 12px, 0) scale(0.9);
+  }
+}
+
+/* --------------------------------------------------------------------
+   RESPONSIVE OPTIMIZATIONS (MOBILE / TABLET)
+   -------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .agency-bg-orbs-container {
+    filter: blur(65px);
+  }
+
+  .agency-bg-orb-3,
+  .agency-bg-orb-5 {
+    display: none; /* Hide 2 secondary orbs on mobile to reduce compositing load */
+  }
+
+  .agency-bg-orb-1,
+  .agency-bg-orb-2,
+  .agency-bg-orb-4 {
+    width: 85vw;
+    height: 85vw;
+    opacity: 0.75;
+  }
+
+  .agency-bg-grid-lines,
+  .agency-bg-grid-dots {
+    background-size: 48px 48px;
+  }
+
+  .agency-bg-aurora-stream-top,
+  .agency-bg-aurora-stream-bottom {
+    height: 220px;
+    filter: blur(60px);
+  }
+}
+
+/* --------------------------------------------------------------------
+   ACCESSIBILITY: PREFERS REDUCED MOTION
+   -------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .agency-bg-grid-lines,
+  .agency-bg-grid-dots,
+  .agency-bg-orb,
+  .agency-bg-aurora-stream-top,
+  .agency-bg-aurora-stream-bottom,
+  .agency-bg-sparkle {
+    animation: none !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .agency-bg-orbs-container {
+    filter: blur(90px);
+  }
+}

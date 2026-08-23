@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" class="light scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary Meta Tags -->
+    <title>ZoneThinks IT | World-Class Web Development & Digital Engineering Agency</title>
+    <meta name="title" content="ZoneThinks IT | World-Class Web Development & Digital Engineering Agency" />
+    <meta name="description" content="We build high-performance, conversion-driven web applications, scalable digital architectures, and bespoke digital experiences that accelerate business growth." />
+    <meta name="keywords" content="web development agency, React Next.js agency, enterprise frontend, SaaS engineering, custom web design, high converting websites" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://zonethinks.it/" />
+    <meta property="og:title" content="ZoneThinks IT | World-Class Web Development Agency" />
+    <meta property="og:description" content="We build high-performance, conversion-driven digital products that grow businesses." />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://zonethinks.it/" />
+    <meta property="twitter:title" content="ZoneThinks IT | World-Class Web Development Agency" />
+    <meta property="twitter:description" content="We build high-performance, conversion-driven digital products that grow businesses." />
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+    <!-- Flash-free theme initialization: runs synchronously before first paint -->
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('agency-theme');
+          var theme = (saved === 'dark' || saved === 'light') ? saved : 'light';
+          document.documentElement.classList.remove('light', 'dark');
+          document.documentElement.classList.add(theme);
+          document.documentElement.style.colorScheme = theme;
+        } catch(e) {
+          document.documentElement.classList.add('light');
+        }
+      })();
+    </script>
+  </head>
+  <body class="antialiased overflow-x-hidden">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

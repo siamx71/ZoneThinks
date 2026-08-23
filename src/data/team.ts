@@ -1,0 +1,198 @@
+export interface TeamMember {
+  id: string;
+  slug: string;
+  name: string;
+  role: string;
+  department: 'Leadership' | 'Engineering' | 'Design' | 'Product';
+  avatar: string;
+  bio: string;
+  longBio: string;
+  experienceYears: number;
+  location: string;
+  skills: {
+    name: string;
+    level: number; // 0-100
+  }[];
+  featuredProjects: string[];
+  achievements: string[];
+  socials: {
+    github?: string;
+    twitter?: string;
+    linkedin?: string;
+    dribbble?: string;
+  };
+}
+
+export const teamData: TeamMember[] = [
+  {
+    id: "alex-vance",
+    slug: "alex-vance",
+    name: "Alex Vance",
+    role: "CEO & Founder",
+    department: "Leadership",
+    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop",
+    bio: "Former Principal Architect at Tier-1 tech firms with 12+ years pioneering high-performance web systems and digital product strategy.",
+    longBio: "Alex founded ZoneThinks IT with a singular vision: to dismantle the bloat of traditional agencies and engineer digital products with uncompromising speed, artistic fidelity, and measurable enterprise value. Having led architectural transformations for Fortune 500 enterprises and hyper-growth startups, Alex brings deep full-stack mastery and strategic product intuition to every client engagement.",
+    experienceYears: 12,
+    location: "San Francisco, CA",
+    skills: [
+      { name: "System Architecture", level: 98 },
+      { name: "Digital Strategy & Growth", level: 96 },
+      { name: "Full-Stack Engineering", level: 94 },
+      { name: "Product Vision", level: 95 }
+    ],
+    featuredProjects: ["fintech-wealth-platform", "luminary-ai-workspace"],
+    achievements: [
+      "Keynote Speaker at Web Architecture Summit 2024",
+      "Architected platforms serving 40M+ monthly active users",
+      "Forbes 30 Under 30 in Enterprise Technology Alumni"
+    ],
+    socials: {
+      github: "https://github.com",
+      twitter: "https://twitter.com",
+      linkedin: "https://linkedin.com"
+    }
+  },
+  {
+    id: "sophia-chen",
+    slug: "sophia-chen",
+    name: "Sophia Chen",
+    role: "Creative Director & Head of UI/UX",
+    department: "Design",
+    avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=600&auto=format&fit=crop",
+    bio: "Award-winning digital designer obsessed with micro-interactions, dark aesthetic design systems, and conversion-focused typography.",
+    longBio: "Sophia directs ZoneThinks IT's design studio. With background in fine arts and human-computer interaction from Stanford, she crafts visual languages that elevate modern brands. Her designs balance striking artistic boldness with rigorous usability research.",
+    experienceYears: 9,
+    location: "New York, NY",
+    skills: [
+      { name: "Design Systems & Tokens", level: 98 },
+      { name: "Micro-Interactions & Motion", level: 95 },
+      { name: "UI/UX & User Research", level: 96 },
+      { name: "Art Direction & 3D", level: 90 }
+    ],
+    featuredProjects: ["veloce-luxury-ecommerce", "luminary-ai-workspace"],
+    achievements: [
+      "Awwwards Site of the Day Winner (x4)",
+      "Red Dot Best of the Best Design Award 2023",
+      "Creator of popular Open-Source Design Tokens System"
+    ],
+    socials: {
+      dribbble: "https://dribbble.com",
+      twitter: "https://twitter.com",
+      linkedin: "https://linkedin.com"
+    }
+  },
+  {
+    id: "marcus-thorne",
+    slug: "marcus-thorne",
+    name: "Marcus Thorne",
+    role: "Lead Frontend Architect",
+    department: "Engineering",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop",
+    bio: "React & Next.js specialist dedicated to sub-second load times, complex animations, and bulletproof component systems.",
+    longBio: "Marcus oversees frontend engineering across all agency projects. A vocal advocate for accessible web standards and zero-runtime CSS, he ensures that every transition, render pass, and layout reflow operates at an unwavering 60 FPS.",
+    experienceYears: 8,
+    location: "Austin, TX",
+    skills: [
+      { name: "React / Next.js / TypeScript", level: 98 },
+      { name: "Framer Motion & WebGL", level: 92 },
+      { name: "Web Vitals & Performance", level: 96 },
+      { name: "Component Architecture", level: 95 }
+    ],
+    featuredProjects: ["fintech-wealth-platform", "synthetix-pay-landing"],
+    achievements: [
+      "Core Contributor to top React animation repositories",
+      "Author of 'High-Performance Next.js in Practice'",
+      "Achieved 100/100 Lighthouse scores on 30+ production sites"
+    ],
+    socials: {
+      github: "https://github.com",
+      twitter: "https://twitter.com",
+      linkedin: "https://linkedin.com"
+    }
+  },
+  {
+    id: "elena-rostova",
+    slug: "elena-rostova",
+    name: "Elena Rostova",
+    role: "Principal Backend & Cloud Engineer",
+    department: "Engineering",
+    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop",
+    bio: "Distributed systems engineer building fault-tolerant microservices, high-throughput APIs, and secure database layers.",
+    longBio: "Elena brings 10+ years of distributed systems engineering experience. She specializes in designing fault-tolerant cloud backends, database sharding, caching topologies, and automated Kubernetes orchestration.",
+    experienceYears: 10,
+    location: "Seattle, WA",
+    skills: [
+      { name: "Node.js / Go / Python", level: 95 },
+      { name: "PostgreSQL & Redis Caching", level: 96 },
+      { name: "Cloud Architecture (AWS/GCP)", level: 94 },
+      { name: "Security & SOC2 Compliance", level: 92 }
+    ],
+    featuredProjects: ["kinetix-telehealth-dashboard", "fintech-wealth-platform"],
+    achievements: [
+      "AWS Certified Solutions Architect Professional",
+      "Designed data pipelines processing 100M+ events daily",
+      "Zero-downtime database migration lead on 15+ missions"
+    ],
+    socials: {
+      github: "https://github.com",
+      linkedin: "https://linkedin.com"
+    }
+  },
+  {
+    id: "david-kim",
+    slug: "david-kim",
+    name: "David Kim",
+    role: "Senior Product Manager",
+    department: "Product",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=600&auto=format&fit=crop",
+    bio: "Agile delivery specialist turning complex technical roadmaps into on-time, high-impact product launches.",
+    longBio: "David bridges client business goals with engineering velocity. His data-driven sprint planning and transparent client communication ensure that milestones are met ahead of schedule and within budget.",
+    experienceYears: 7,
+    location: "Toronto, Canada",
+    skills: [
+      { name: "Agile & Sprint Orchestration", level: 95 },
+      { name: "User Journey & Analytics", level: 92 },
+      { name: "Risk Management", level: 90 },
+      { name: "Client Discovery & Roadmapping", level: 94 }
+    ],
+    featuredProjects: ["kinetix-telehealth-dashboard", "onyx-commercial-proptech"],
+    achievements: [
+      "Certified Scrum Product Owner (CSPO)",
+      "Managed 45+ enterprise digital launches with 100% on-time record",
+      "Ex-Product Lead at venture-backed FinTech accelerator"
+    ],
+    socials: {
+      linkedin: "https://linkedin.com",
+      twitter: "https://twitter.com"
+    }
+  },
+  {
+    id: "maya-patel",
+    slug: "maya-patel",
+    name: "Maya Patel",
+    role: "Lead QA & Security Engineer",
+    department: "Engineering",
+    avatar: "https://images.unsplash.com/photo-1534751516642-a171ed2ab376?q=80&w=600&auto=format&fit=crop",
+    bio: "Ensuring bulletproof code quality, automated test coverage, and penetration resistance across all web deliverables.",
+    longBio: "Maya leads quality engineering and security hardening. She builds automated end-to-end testing suites, cross-browser compatibility matrices, and vulnerability scanning pipelines that protect our clients' users.",
+    experienceYears: 6,
+    location: "Chicago, IL",
+    skills: [
+      { name: "Automated E2E Testing (Playwright/Cypress)", level: 95 },
+      { name: "Security & Penetration Auditing", level: 90 },
+      { name: "Cross-Device QA Testing", level: 96 },
+      { name: "CI/CD Pipeline Hardening", level: 92 }
+    ],
+    featuredProjects: ["kinetix-telehealth-dashboard", "veloce-luxury-ecommerce"],
+    achievements: [
+      "Authored automated regression test suite adopted by 20+ teams",
+      "Certified Ethical Hacker (CEH)",
+      "Maintains 99.8% zero-defect release record across clients"
+    ],
+    socials: {
+      github: "https://github.com",
+      linkedin: "https://linkedin.com"
+    }
+  }
+];
