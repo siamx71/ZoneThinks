@@ -14,10 +14,11 @@ import {
 import { SEO } from '@/components/common/SEO';
 import { SectionHeading } from '@/components/common/SectionHeading';
 import { Button } from '@/components/common/Button';
-import { projectsData } from '@/data/projects';
+import { useAdmin } from '@/context/AdminContext';
 import { staggerContainer, fadeIn } from '@/animations/variants';
 
 export const CaseStudies: React.FC = () => {
+  const { projects } = useAdmin();
   return (
     <div className="relative pb-24">
       <SEO
@@ -84,7 +85,7 @@ export const CaseStudies: React.FC = () => {
       {/* In-Depth Case Studies Feed */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-          {projectsData.map((project, idx) => (
+          {projects.map((project, idx) => (
             <div
               key={project.id}
               className="p-8 sm:p-12 rounded-3xl bg-surface-raised border border-edge/30 shadow-card-light dark:shadow-glass overflow-hidden"

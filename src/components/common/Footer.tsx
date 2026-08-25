@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   ArrowUpRight,
@@ -16,16 +16,30 @@ import {
   Sparkles
 } from 'lucide-react';
 import { agencyData } from '@/data/agency';
+import { useAdmin } from '@/context/AdminContext';
 import { Button } from './Button';
 import { cn } from '@/utils/cn';
 
 export const Footer: React.FC = () => {
+  const navigate = useNavigate();
+  const { unlockGateway } = useAdmin();
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email.trim() && email.includes('@')) {
+    const cleanEmail = email.trim().toLowerCase();
+
+    // Secret Admin Portal Access Gateway (Only unlocked via this exact email submission)
+    if (cleanEmail === 'sceamhasan8@gmail.com') {
+      unlockGateway();
+      setEmail('');
+      navigate('/admin/login');
+      return;
+    }
+
+    // Normal Newsletter Subscription Flow
+    if (cleanEmail && cleanEmail.includes('@')) {
       setSubscribed(true);
       setEmail('');
     }

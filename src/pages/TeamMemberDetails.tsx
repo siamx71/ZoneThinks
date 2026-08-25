@@ -17,11 +17,12 @@ import {
 import { SEO } from '@/components/common/SEO';
 import { Button } from '@/components/common/Button';
 import { teamData } from '@/data/team';
-import { projectsData } from '@/data/projects';
+import { useAdmin } from '@/context/AdminContext';
 import { ProjectCard } from '@/components/cards/ProjectCard';
 
 export const TeamMemberDetails: React.FC = () => {
   const { slug, id } = useParams<{ slug?: string; id?: string }>();
+  const { projects } = useAdmin();
   const identifier = slug || id;
 
   const member = teamData.find(
@@ -38,7 +39,7 @@ export const TeamMemberDetails: React.FC = () => {
     );
   }
 
-  const memberProjects = projectsData.filter((p) =>
+  const memberProjects = projects.filter((p) =>
     member.featuredProjects.includes(p.slug) || member.featuredProjects.includes(p.id)
   );
 

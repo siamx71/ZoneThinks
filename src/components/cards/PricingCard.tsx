@@ -8,9 +8,14 @@ import { cn } from '@/utils/cn';
 interface PricingCardProps {
   plan: PricingTier;
   billingCycle: 'project' | 'monthly';
+  onSelectPlan?: (plan: PricingTier) => void;
 }
 
-export const PricingCard: React.FC<PricingCardProps> = ({ plan, billingCycle }) => {
+export const PricingCard: React.FC<PricingCardProps> = ({
+  plan,
+  billingCycle,
+  onSelectPlan,
+}) => {
   const isMonthly = billingCycle === 'monthly';
   const price = isMonthly ? plan.monthlyPrice : plan.projectPrice;
   const priceSub = isMonthly ? plan.monthlyPriceSub : plan.projectPriceSub;
@@ -103,14 +108,30 @@ export const PricingCard: React.FC<PricingCardProps> = ({ plan, billingCycle }) 
       </div>
 
       {/* Action Button */}
-      <Button
-        to="/contact"
-        variant={plan.popular ? 'primary' : 'secondary'}
-        size="md"
-        className="w-full justify-center"
-      >
-        {plan.ctaText}
-      </Button>
+      {onSelectPlan ? (
+        <button
+          type="button"
+          onClick={() => onSelectPlan(plan)}
+          className={cn(
+            "w-full py-3.5 px-6 rounded-xl font-heading font-bold text-sm transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer shadow-sm",
+            plan.popular
+              ? "bg-brand-cyan text-black hover:shadow-glow-cyan hover:scale-[1.02]"
+              : "bg-surface-overlay border border-edge/30 text-text-primary hover:border-brand-cyan/50 hover:bg-surface-subtle"
+          )}
+        >
+          <span>{plan.ctaText}</span>
+          <Sparkles className="w-4 h-4" />
+        </button>
+      ) : (
+        <Button
+          to="/contact"
+          variant={plan.popular ? 'primary' : 'secondary'}
+          size="md"
+          className="w-full justify-center"
+        >
+          {plan.ctaText}
+        </Button>
+      )}
     </motion.div>
   );
 };

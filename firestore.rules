@@ -1,0 +1,49 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper function to check if request is from the authorized Admin
+    function isAdmin() {
+      return request.auth != null && (
+        request.auth.token.email == 'sceamhasan8@gmail.com' ||
+        request.auth.token.admin == true
+      );
+    }
+
+    // 1. Projects Showcase (Public Read, Admin Write Only)
+    match /projects/{projectId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    // 2. Pricing Plans (Public Read, Admin Write Only)
+    match /pricing/{planId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    // 3. Purchase Orders (Public Create with Validation, Admin Read/Update/Delete Only)
+    match /purchaseOrders/{orderId} {
+      // Clients can only submit valid purchase orders
+      allow create: if request.resource.data.clientName is string &&
+                       request.resource.data.clientEmail is string &&
+                       request.resource.data.planName is string &&
+                       request.resource.data.price is string &&
+                       request.resource.data.clientEmail.matches('^[^@]+@[^@]+\\.[^@]+$');
+      
+      // Only the verified admin can view client orders, change status, or delete
+      allow read, update, delete: if isAdmin();
+    }
+
+    // 4. Global Multi-Device Realtime Snapshot (Public Read, Admin Write)
+    match /system_snapshot/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // 5. Default Deny-All for any undefined paths (Zero Security Gaps)
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

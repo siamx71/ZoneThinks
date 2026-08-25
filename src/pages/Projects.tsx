@@ -3,7 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, Layers, RotateCcw } from 'lucide-react';
 import { SEO } from '@/components/common/SEO';
 import { ProjectCard } from '@/components/cards/ProjectCard';
-import { projectsData, ProjectItem } from '@/data/projects';
+import { ProjectItem } from '@/data/projects';
+import { useAdmin } from '@/context/AdminContext';
 import { cn } from '@/utils/cn';
 import { staggerContainer, fadeIn } from '@/animations/variants';
 
@@ -12,12 +13,13 @@ type CategoryFilter = 'All' | 'Websites' | 'SaaS' | 'E-commerce' | 'Dashboard' |
 const categories: CategoryFilter[] = ['All', 'Websites', 'SaaS', 'E-commerce', 'Dashboard', 'Landing Pages'];
 
 export const Projects: React.FC = () => {
+  const { projects } = useAdmin();
   const [activeCategory, setActiveCategory] = useState<CategoryFilter>('All');
 
   const filteredProjects =
     activeCategory === 'All'
-      ? projectsData
-      : projectsData.filter((p) => p.category.toLowerCase() === activeCategory.toLowerCase());
+      ? projects
+      : projects.filter((p) => p.category.toLowerCase() === activeCategory.toLowerCase());
 
   return (
     <div className="relative pb-24">

@@ -1,0 +1,581 @@
+{
+  "isAuthenticated": true,
+  "isGatewayUnlocked": true,
+  "projects": [
+    {
+      "id": "proj-2",
+      "slug": "luminary-ai-workspace",
+      "title": "Luminary AI - Neural Content Studio",
+      "client": "Luminary Technologies",
+      "category": "Websites",
+      "industry": "Artificial Intelligence",
+      "shortDesc": "High-impact brand launch website with 3D canvas visuals and interactive generative AI demos.",
+      "fullOverview": "Luminary AI required an unforgettable digital presence for their Series-B announcement. We engineered an interactive web showcase highlighting their generative neural models with real-time prompt playground previews and silky smooth scroll narratives.",
+      "challenge": "AI websites frequently feel generic or overly academic. Luminary needed to captivate enterprise buyers while clearly explaining deep-tech multimodal inference without overwhelming the visitor.",
+      "solution": "We designed an immersive dark-aesthetic website featuring scroll-tied shader transitions, a live interactive sandbox, and crystal-clear pricing calculators tailored for Fortune 500 decision makers.",
+      "designProcess": [
+        "Defined a futuristic cyber-minimalism design language with neon cyan and deep obsidian.",
+        "Engineered bespoke 3D vector canvas animations representing neural token streams.",
+        "Iterated on copy hierarchy to highlight enterprise ROI over technical jargon."
+      ],
+      "devProcess": [
+        "Optimized WebGL canvas shaders to run at a solid 60 FPS on low-power mobile GPUs.",
+        "Built dynamic server-side rendering for instant global CDN edge delivery.",
+        "Implemented seamless Framer Motion staggered transitions across all viewports."
+      ],
+      "features": [
+        "Interactive in-browser AI prompt benchmark simulator",
+        "Dynamic ROI & compute cost comparison calculator",
+        "Zero-latency global CDN edge caching",
+        "Comprehensive interactive API documentation hub"
+      ],
+      "technologies": [
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Framer Motion",
+        "Three.js / Canvas",
+        "Vite"
+      ],
+      "metrics": [
+        {
+          "label": "Conversion Rate",
+          "value": "8.4%",
+          "description": "visitor-to-waitlist conversion"
+        },
+        {
+          "label": "Page Load Time",
+          "value": "0.65s",
+          "description": "global median load time"
+        },
+        {
+          "label": "Series B Inquiries",
+          "value": "320+",
+          "description": "enterprise leads in 30 days"
+        }
+      ],
+      "heroImage": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1000&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1000&auto=format&fit=crop"
+      ],
+      "timeline": "6 Weeks",
+      "year": 2025,
+      "liveUrl": "https://luminary-ai-demo.example.com",
+      "testimonial": {
+        "quote": "The website designed and built by ZoneThinks IT positioned our company as an undisputed category leader. We closed our Series B round with investors citing the digital experience as a major trust builder.",
+        "author": "Elena Rostova",
+        "role": "Co-Founder & CEO",
+        "company": "Luminary Technologies",
+        "avatar": "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=300&auto=format&fit=crop"
+      }
+    },
+    {
+      "id": "proj-3",
+      "slug": "veloce-luxury-ecommerce",
+      "title": "Veloce Atelier - Headless Luxury Commerce",
+      "client": "Veloce Italian Luxury Goods",
+      "category": "E-commerce",
+      "industry": "Luxury Fashion & Retail",
+      "shortDesc": "Bespoke headless e-commerce store with 3D product customization and 1-click global checkout.",
+      "fullOverview": "Veloce Atelier is a Milan-based luxury leather goods house. They needed an editorial-grade digital boutique that preserved their 60-year heritage while delivering modern conveniences like custom monogramming previews and instant multi-currency settlement.",
+      "challenge": "Their previous monolithic Magento store was sluggish (5s load times) and lacked mobile luxury aesthetics, causing a 68% cart abandonment rate among mobile luxury shoppers.",
+      "solution": "We built a headless Shopify Plus architecture with Next.js Commerce, dynamic SVG monogram customization, and instant Stripe payment flows with automatic tax and duties calculation.",
+      "designProcess": [
+        "Crafted an haute-couture digital aesthetic featuring editorial typography and subtle hover zooms.",
+        "Designed a real-time leather texture and typography monogramming configurator.",
+        "Optimized mobile tap targets for effortless one-thumb luxury purchasing."
+      ],
+      "devProcess": [
+        "Integrated Shopify Storefront GraphQL API with Next.js edge caching.",
+        "Implemented Algolia instant search with predictive visual merchandise suggestions.",
+        "Configured automated multi-currency switching across 42 countries."
+      ],
+      "features": [
+        "Real-time 3D and high-resolution texture product customizer",
+        "Global localized currency and prepaid duties calculation",
+        "Apple Pay & Google Pay express 1-click checkout",
+        "Editorial storytelling integrated directly into product pages"
+      ],
+      "technologies": [
+        "Next.js",
+        "Shopify GraphQL",
+        "Tailwind CSS",
+        "Stripe API",
+        "Algolia",
+        "Framer Motion"
+      ],
+      "metrics": [
+        {
+          "label": "Mobile Conversions",
+          "value": "+148%",
+          "description": "increase in mobile purchases"
+        },
+        {
+          "label": "Cart Abandonment",
+          "value": "-42%",
+          "description": "reduction in checkout drop-offs"
+        },
+        {
+          "label": "Average Order Value",
+          "value": "$620",
+          "description": "up from $380 before launch"
+        }
+      ],
+      "heroImage": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200&auto=format&fit=crop",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=1000&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1000&auto=format&fit=crop"
+      ],
+      "timeline": "8 Weeks",
+      "year": 2025,
+      "testimonial": {
+        "quote": "Our online store now matches the prestige and elegance of our flagship boutique in Milan. Online revenue surpassed our physical stores within two months of launch.",
+        "author": "Matteo Bianchi",
+        "role": "Managing Director",
+        "company": "Veloce Atelier",
+        "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=300&auto=format&fit=crop"
+      }
+    },
+    {
+      "id": "proj-4",
+      "slug": "kinetix-telehealth-dashboard",
+      "title": "Kinetix Care - Telehealth Provider Suite",
+      "client": "Kinetix Health Systems",
+      "category": "Dashboard",
+      "industry": "HealthTech & Telemedicine",
+      "shortDesc": "HIPAA-compliant doctor and patient clinical portal with real-time video consultations.",
+      "fullOverview": "Kinetix Care connects over 2,000 certified clinicians with patients across North America. We engineered a HIPAA-compliant medical portal featuring encrypted WebRTC video rooms, automated electronic health record (EHR) synchronization, and smart scheduling.",
+      "challenge": "Navigating fragmented medical software often leads to clinician burnout. Kinetix needed an interface so clean that doctors could conduct visits and complete charting in half the normal time.",
+      "solution": "We engineered an intuitive split-screen consultation interface with automated transcription, quick-order prescription workflows, and role-based access for multi-specialty clinics.",
+      "designProcess": [
+        "Conducted on-site ethnographic workflow studies with practicing physicians.",
+        "Designed high-contrast, low-fatigue dark and light interfaces for long clinical shifts.",
+        "Built rigorous accessibility standards for patients with visual or physical impairments."
+      ],
+      "devProcess": [
+        "Engineered end-to-end encrypted WebRTC video streaming with automatic bitrate fallback.",
+        "Constructed FHIR-compliant API connectors for seamless EHR integrations.",
+        "Implemented strict zero-knowledge encryption architecture for all patient data."
+      ],
+      "features": [
+        "End-to-end encrypted HD video consultations with screen sharing",
+        "Instant e-Prescriptions integrated with major national pharmacy networks",
+        "AI-assisted clinical note generation and FHIR export",
+        "Automated insurance eligibility verification in real time"
+      ],
+      "technologies": [
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Node.js",
+        "WebRTC",
+        "PostgreSQL",
+        "Docker"
+      ],
+      "metrics": [
+        {
+          "label": "Clinician Charting Time",
+          "value": "-52%",
+          "description": "time saved per consultation"
+        },
+        {
+          "label": "Active Consultations",
+          "value": "250K+",
+          "description": "completed securely without incident"
+        },
+        {
+          "label": "HIPAA Compliance",
+          "value": "100%",
+          "description": "audit clearance with zero defects"
+        }
+      ],
+      "heroImage": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1200&auto=format&fit=crop",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1000&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?q=80&w=1000&auto=format&fit=crop"
+      ],
+      "timeline": "14 Weeks",
+      "year": 2024,
+      "testimonial": {
+        "quote": "ZoneThinks IT took a complex, heavily-regulated medical application and made it feel as frictionless as consumer software. Our doctor satisfaction scores jumped from 62% to 98%.",
+        "author": "Dr. Sarah Jenkins",
+        "role": "Chief Medical Officer",
+        "company": "Kinetix Health",
+        "avatar": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=300&auto=format&fit=crop"
+      }
+    },
+    {
+      "id": "proj-5",
+      "slug": "synthetix-pay-landing",
+      "title": "Synthetix Pay - Global Settlement API",
+      "client": "Synthetix Protocol",
+      "category": "Landing Pages",
+      "industry": "FinTech & Developer Tools",
+      "shortDesc": "High-converting developer landing page with interactive API code playgrounds and live sandbox.",
+      "fullOverview": "Synthetix needed a high-conversion developer portal to drive adoption of their global settlement API among web developers and engineering leaders.",
+      "challenge": "Developer audiences are notoriously cynical toward standard marketing claims; they demand interactive code examples, transparent latency benchmarks, and direct documentation access.",
+      "solution": "We designed an interactive code execution terminal right in the hero section, with syntax highlighting, language toggles (cURL, Node, Python, Go), and real-time sandbox response verification.",
+      "designProcess": [
+        "Designed a sleek code-first developer aesthetic with JetBrains Mono and syntax highlighting.",
+        "Organized information architecture to reduce clicks-to-first-API-call from 6 to 1."
+      ],
+      "devProcess": [
+        "Implemented a simulated client-side code runner with copy-to-clipboard functionality.",
+        "Optimized bundle size for 99+ Lighthouse performance scores."
+      ],
+      "features": [
+        "Interactive multi-language code snippets with 1-click sandbox testing",
+        "Live API uptime and latency telemetry visualizer",
+        "Interactive webhook event tester and payload builder"
+      ],
+      "technologies": [
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Framer Motion",
+        "PrismJS"
+      ],
+      "metrics": [
+        {
+          "label": "API Key Signups",
+          "value": "+210%",
+          "description": "increase in developer onboarding"
+        },
+        {
+          "label": "Time to First Call",
+          "value": "<90s",
+          "description": "down from 8 minutes"
+        },
+        {
+          "label": "Lighthouse Score",
+          "value": "99/100",
+          "description": "across all mobile & desktop audits"
+        }
+      ],
+      "heroImage": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1000&auto=format&fit=crop"
+      ],
+      "timeline": "4 Weeks",
+      "year": 2025
+    },
+    {
+      "id": "proj-6",
+      "slug": "onyx-commercial-proptech",
+      "title": "Onyx Spaces - Commercial Real Estate Platform",
+      "client": "Onyx Real Estate Partners",
+      "category": "Websites",
+      "industry": "PropTech & Commercial Real Estate",
+      "shortDesc": "Virtual building tours, interactive leasing floor plans, and tenant experience portal.",
+      "fullOverview": "Onyx manages $3B+ in premium commercial real estate. We built a digital leasing experience allowing enterprise tenants to explore floorplates in 3D, calculate space requirements, and initiate digital lease proposals.",
+      "challenge": "High-value commercial leasing traditionally relied on printed brochures and in-person walkthroughs, slowing down the transaction cycle by months.",
+      "solution": "We engineered an interactive SVG floor plan visualizer, automated lease yield calculators, and video tour integrations that accelerated tenant decision-making.",
+      "designProcess": [
+        "Created an architectural luxury design language with clean lines and subtle gold accents.",
+        "Designed an intuitive filter system for square footage, zoning, and building amenities."
+      ],
+      "devProcess": [
+        "Integrated dynamic SVG floor plan maps with custom hover states and lease status markers.",
+        "Connected CRM automation for immediate leasing broker notifications."
+      ],
+      "features": [
+        "Interactive SVG floor plan explorer with dimension scaling",
+        "Custom space density and lease cost calculator",
+        "Automated broker tour scheduling engine"
+      ],
+      "technologies": [
+        "React",
+        "Next.js",
+        "Tailwind CSS",
+        "Framer Motion",
+        "Mapbox GL"
+      ],
+      "metrics": [
+        {
+          "label": "Leasing Cycle",
+          "value": "-35%",
+          "description": "faster from inquiry to signed lease"
+        },
+        {
+          "label": "Digital Inquiries",
+          "value": "3.2x",
+          "description": "growth in verified corporate prospects"
+        },
+        {
+          "label": "Portfolio Occupancy",
+          "value": "96.4%",
+          "description": "all-time high across properties"
+        }
+      ],
+      "heroImage": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1000&auto=format&fit=crop"
+      ],
+      "timeline": "8 Weeks",
+      "year": 2024
+    }
+  ],
+  "pricingPlans": [
+    {
+      "id": "starter",
+      "name": "Starter Launch",
+      "tagline": "Essential high-performance website for ambitious startups and product launches.",
+      "projectPrice": "$2,000",
+      "projectPriceSub": "one-time investment",
+      "monthlyPrice": "$2,400",
+      "monthlyPriceSub": "per month / 3mo min",
+      "deliveryTimeline": "2 - 3 Weeks",
+      "revisionPolicy": "3 Rounds of Structured Revisions",
+      "recommendedFor": "Early-stage startups, modern portfolio & product launch websites",
+      "features": [
+        {
+          "title": "Up to 5 Custom High-Performance Pages",
+          "included": true
+        },
+        {
+          "title": "Custom Responsive Design & Tailwind CSS",
+          "included": true
+        },
+        {
+          "title": "React / Next.js Fast Static Generation",
+          "included": true
+        },
+        {
+          "title": "Basic Framer Motion Animations & Transitions",
+          "included": true
+        },
+        {
+          "title": "Contact Form with Lead Notifications",
+          "included": true
+        },
+        {
+          "title": "SEO Meta & Core Web Vitals Optimization",
+          "included": true
+        },
+        {
+          "title": "CMS Integration (Sanity / Strapi)",
+          "included": false
+        },
+        {
+          "title": "Custom Backend & Database Architecture",
+          "included": false
+        },
+        {
+          "title": "Dedicated Slack Communication Channel",
+          "included": false
+        },
+        {
+          "title": "24/7 SLA Engineering Support",
+          "included": false
+        }
+      ],
+      "ctaText": "Start with Starter",
+      "popular": true
+    },
+    {
+      "id": "business",
+      "name": "Business Scale",
+      "badge": "Most Popular",
+      "tagline": "Comprehensive full-stack digital experience for scaling businesses and modern brands.",
+      "projectPrice": "$9,500",
+      "projectPriceSub": "one-time investment",
+      "monthlyPrice": "$4,200",
+      "monthlyPriceSub": "per month / flexible",
+      "deliveryTimeline": "4 - 6 Weeks",
+      "revisionPolicy": "Unlimited Revisions during active sprints",
+      "recommendedFor": "Growing tech companies, SaaS marketing sites, high-converting stores",
+      "features": [
+        {
+          "title": "Up to 12 Custom Pages + Dynamic Routing",
+          "included": true
+        },
+        {
+          "title": "Bespoke Figma UI/UX Design System",
+          "included": true
+        },
+        {
+          "title": "React 19 / Next.js 15 Full-Stack Setup",
+          "included": true
+        },
+        {
+          "title": "Advanced Framer Motion Micro-Interactions",
+          "included": true
+        },
+        {
+          "title": "Headless CMS Integration (Sanity / Strapi)",
+          "included": true
+        },
+        {
+          "title": "Lead Generation & CRM Automation",
+          "included": true
+        },
+        {
+          "title": "Full Technical SEO & Performance Guarantee (95+)",
+          "included": true
+        },
+        {
+          "title": "Dedicated Slack Communication Channel",
+          "included": true
+        },
+        {
+          "title": "Stripe Payment / Subscription Integration",
+          "included": true
+        },
+        {
+          "title": "24/7 SLA Engineering Support",
+          "included": false
+        }
+      ],
+      "ctaText": "Choose Business Scale",
+      "popular": true
+    },
+    {
+      "id": "professional",
+      "name": "Enterprise SaaS",
+      "badge": "Maximum Power",
+      "tagline": "Custom web applications, multi-tenant SaaS platforms, and high-load architectures.",
+      "projectPrice": "$18,500",
+      "projectPriceSub": "one-time investment",
+      "monthlyPrice": "$7,800",
+      "monthlyPriceSub": "per month / dedicated pod",
+      "deliveryTimeline": "6 - 10 Weeks",
+      "revisionPolicy": "Continuous Agile Iteration & Feedback",
+      "recommendedFor": "SaaS products, complex data dashboards, enterprise web portals",
+      "features": [
+        {
+          "title": "Unlimited Pages & Dynamic Component Library",
+          "included": true
+        },
+        {
+          "title": "End-to-End SaaS Architecture & Multi-Tenancy",
+          "included": true
+        },
+        {
+          "title": "PostgreSQL Database & Real-Time Sync",
+          "included": true
+        },
+        {
+          "title": "Role-Based Access Control (RBAC) & Auth",
+          "included": true
+        },
+        {
+          "title": "Stripe Billing, Invoicing & Subscription Tiering",
+          "included": true
+        },
+        {
+          "title": "Interactive Dashboards & Custom Data Charts",
+          "included": true
+        },
+        {
+          "title": "Automated E2E Testing Suite (Playwright)",
+          "included": true
+        },
+        {
+          "title": "Dedicated Slack Channel & Daily Standups",
+          "included": true
+        },
+        {
+          "title": "Automated CI/CD Deployment Pipeline",
+          "included": true
+        },
+        {
+          "title": "99.9% Uptime SLA & Security Hardening",
+          "included": true
+        }
+      ],
+      "ctaText": "Launch Enterprise SaaS",
+      "popular": false
+    },
+    {
+      "id": "enterprise",
+      "name": "Custom Retainer",
+      "badge": "Dedicated Pod",
+      "tagline": "Your dedicated elite engineering and design department on retainer.",
+      "projectPrice": "Custom",
+      "projectPriceSub": "tailored to your scope",
+      "monthlyPrice": "Custom",
+      "monthlyPriceSub": "based on dedicated pod size",
+      "deliveryTimeline": "Continuous Delivery",
+      "revisionPolicy": "Infinite Agile Sprints",
+      "recommendedFor": "Enterprises needing ongoing digital evolution and senior bandwidth",
+      "features": [
+        {
+          "title": "Dedicated Senior Engineers & Lead Designer",
+          "included": true
+        },
+        {
+          "title": "Direct Leadership Access & Product Strategy",
+          "included": true
+        },
+        {
+          "title": "Full Codebase Ownership & IP Transfer",
+          "included": true
+        },
+        {
+          "title": "Custom Microservice & Cloud Infrastructure",
+          "included": true
+        },
+        {
+          "title": "Enterprise SOC2 & HIPAA Compliance Readiness",
+          "included": true
+        },
+        {
+          "title": "Custom Integrations with ERP / Legacy Systems",
+          "included": true
+        },
+        {
+          "title": "Priority 1-Hour SLA Emergency Support",
+          "included": true
+        },
+        {
+          "title": "Dedicated Lead Solutions Architect",
+          "included": true
+        },
+        {
+          "title": "Weekly Strategy & Bi-Weekly Sprint Releases",
+          "included": true
+        },
+        {
+          "title": "Custom Contract & NDA Guarantee",
+          "included": true
+        }
+      ],
+      "ctaText": "Talk to Leadership",
+      "popular": false
+    }
+  ],
+  "purchaseOrders": [
+    {
+      "id": "ZT-ORD-1094",
+      "clientName": "Alexander Hayes",
+      "clientEmail": "alex.hayes@vertexbiotech.io",
+      "clientPhone": "+1 (415) 890-2341",
+      "companyName": "Vertex BioTech",
+      "planId": "business",
+      "planName": "Business Scale",
+      "billingCycle": "One-Time Project",
+      "price": "$9,500",
+      "timeline": "4 - 6 Weeks",
+      "projectRequirements": "Complete redesign of our web platform with Next.js 15, custom interactive DNA-mesh 3D animations, and lead automation pipeline.",
+      "status": "In Progress",
+      "createdAt": "2026-08-24 14:32"
+    },
+    {
+      "id": "ZT-ORD-1095",
+      "clientName": "Elena Rostova",
+      "clientEmail": "elena@novafinance.co.uk",
+      "clientPhone": "+44 20 7946 0912",
+      "companyName": "Nova Financial UK",
+      "planId": "professional",
+      "planName": "Enterprise SaaS",
+      "billingCycle": "Monthly Retainer",
+      "price": "$7,800/mo",
+      "timeline": "6 - 10 Weeks",
+      "projectRequirements": "Multi-tenant wealth tech portal with real-time portfolio analytics, biometric authentication, and custom billing tiers.",
+      "status": "Pending",
+      "createdAt": "2026-08-25 18:15"
+    }
+  ],
+  "_lastUpdated": 1787676164602
+}

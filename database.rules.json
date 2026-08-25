@@ -1,0 +1,28 @@
+{
+  "rules": {
+    "system_snapshot": {
+      ".read": true,
+      ".write": "auth != null && (auth.token.email == 'sceamhasan8@gmail.com' || auth.token.admin == true)"
+    },
+    "projects": {
+      ".read": true,
+      ".write": "auth != null && (auth.token.email == 'sceamhasan8@gmail.com' || auth.token.admin == true)"
+    },
+    "pricingPlans": {
+      ".read": true,
+      ".write": "auth != null && (auth.token.email == 'sceamhasan8@gmail.com' || auth.token.admin == true)"
+    },
+    "purchaseOrders": {
+      ".read": "auth != null && (auth.token.email == 'sceamhasan8@gmail.com' || auth.token.admin == true)",
+      "$orderId": {
+        ".read": "auth != null && (auth.token.email == 'sceamhasan8@gmail.com' || auth.token.admin == true)",
+        ".write": "(auth != null && (auth.token.email == 'sceamhasan8@gmail.com' || auth.token.admin == true)) || (!data.exists() && newData.exists())",
+        ".validate": "newData.hasChildren(['clientName', 'clientEmail', 'planName', 'price'])"
+      }
+    },
+    "$other": {
+      ".read": false,
+      ".write": false
+    }
+  }
+}

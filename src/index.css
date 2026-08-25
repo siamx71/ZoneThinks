@@ -253,3 +253,23 @@
 :root:not(.dark) ::-webkit-scrollbar-track  { background: #f8fafc; }
 :root:not(.dark) ::-webkit-scrollbar-thumb  { background: #cbd5e1; border-color: #e2e8f0; }
 :root:not(.dark) ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* ── 120 FPS GPU Acceleration & Smooth Scrolling Performance ── */
+.gpu-layer {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+img, video {
+  content-visibility: auto;
+}
+

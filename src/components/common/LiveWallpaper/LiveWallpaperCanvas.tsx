@@ -23,9 +23,6 @@ interface Particle {
   color: string;
   toolName: string;
   showAmbientLabel: boolean;
-  size: number;
-  angle: number;
-  spinSpeed: number;
   depth: number; // 0.5 to 1.5
 }
 
@@ -38,9 +35,8 @@ interface Shockwave {
   color: string;
 }
 
-// Comprehensive list of industry-standard Web Development tools & technologies
+// Industry-standard Web Development tools & tokens
 const WEB_DEV_TOOLS = [
-  // Modern Frontend & Frameworks
   'React',
   'Next.js',
   'TypeScript',
@@ -58,8 +54,6 @@ const WEB_DEV_TOOLS = [
   'Shadcn UI',
   'Framer Motion',
   'Angular',
-  'Sass',
-  // Backend & Runtimes
   'Node.js',
   'Python',
   'GraphQL',
@@ -71,8 +65,6 @@ const WEB_DEV_TOOLS = [
   'WebSockets',
   'Bun',
   'Golang',
-  'gRPC',
-  // Databases & Cloud & DevOps
   'PostgreSQL',
   'MongoDB',
   'Redis',
@@ -89,22 +81,17 @@ const WEB_DEV_TOOLS = [
   'CI/CD',
   'Linux',
   'Nginx',
-  'Postman',
-  // Code & Architecture Tokens
   '</>',
   '{...}',
-  'npm i',
   'async/await',
   '200 OK',
   'git push',
   'JSON',
   'SQL',
   'JWT',
-  'OAuth 2.0',
   ':root',
   '<div>',
   'API',
-  'REST',
   'CRUD',
   'Microservices',
 ];
@@ -130,8 +117,11 @@ export const LiveWallpaperCanvas: React.FC<LiveWallpaperCanvasProps> = ({
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
-    // DPI Scaling for crystal-clear retina rendering
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    // Optimized DPR: 1.0 on mobile and touch devices, 1.5 max on desktop for silky 120fps with minimal GPU fillrate
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    const isMobileScreen = width < 768;
+    const dpr = isTouchDevice || isMobileScreen ? 1.0 : Math.min(window.devicePixelRatio || 1, 1.5);
+
     canvas.width = width * dpr;
     canvas.height = height * dpr;
     ctx.scale(dpr, dpr);
@@ -140,89 +130,87 @@ export const LiveWallpaperCanvas: React.FC<LiveWallpaperCanvasProps> = ({
 
     // Speed multiplier
     const speedMap: Record<WallpaperSpeed, number> = {
-      slow: 0.5,
+      slow: 0.6,
       normal: 1.0,
-      fast: 1.8,
+      fast: 1.6,
     };
     const currentSpeed = speedMap[speed] || 1.0;
 
-    // Density count multiplier
+    // Density multiplier
     const densityMap: Record<WallpaperDensity, number> = {
-      low: 0.65,
+      low: 0.6,
       medium: 1.0,
-      ultra: 1.6,
+      ultra: 1.4,
     };
     const densityMult = densityMap[density] || 1.0;
 
-    // Calculate particle count according to screen area
+    // Device-adaptive particle counts
     const area = width * height;
-    const baseCount = Math.floor((area / 14000) * densityMult);
-    const particleCount = Math.max(36, Math.min(baseCount, 160));
+    let particleCount: number;
+    if (isMobileScreen) {
+      // 16 to 28 particles on mobile for 120 FPS performance
+      particleCount = Math.max(16, Math.min(Math.floor((area / 32000) * densityMult), 28));
+    } else {
+      // 36 to 68 particles on desktop for balanced density and 120 FPS
+      particleCount = Math.max(36, Math.min(Math.floor((area / 24000) * densityMult), 68));
+    }
 
     // Theme color palettes
     const getColors = () => {
       const dark = isDarkMode();
       if (dark) {
-        // Dark mode untouched
         return {
-          primary: 'rgba(0, 242, 254, ', // Neon Cyan
-          secondary: 'rgba(139, 92, 246, ', // Electric Purple
-          accent: 'rgba(59, 130, 246, ', // Cyber Blue
-          glow: 'rgba(0, 242, 254, 0.5)',
+          primary: 'rgba(0, 242, 254, ',
+          secondary: 'rgba(139, 92, 246, ',
+          accent: 'rgba(59, 130, 246, ',
+          glow: 'rgba(0, 242, 254, 0.4)',
           textGlyph: '#00F2FE',
           line: '0, 242, 254',
           hoverColor: '#00F2FE',
         };
       } else {
-        // Light mode: High-contrast Deep Electric Sapphire & Royal Indigo for crystal-clear visibility
         return {
-          primary: 'rgba(29, 78, 216, ', // Deep Sapphire Blue 700
-          secondary: 'rgba(109, 40, 217, ', // Rich Royal Indigo-Purple 700
-          accent: 'rgba(2, 132, 199, ', // Vibrant Sky 600
-          glow: 'rgba(29, 78, 216, 0.6)',
-          textGlyph: '#1E3A8A', // Blue 900 for ultra-crisp text on white
-          line: '30, 64, 175', // Deep Blue 800
-          hoverColor: '#1D4ED8', // Electric Sapphire 700
+          primary: 'rgba(29, 78, 216, ',
+          secondary: 'rgba(109, 40, 217, ',
+          accent: 'rgba(2, 132, 199, ',
+          glow: 'rgba(29, 78, 216, 0.4)',
+          textGlyph: '#1E3A8A',
+          line: '30, 64, 175',
+          hoverColor: '#1D4ED8',
         };
       }
     };
 
     let colors = getColors();
-
-    // Shuffled tools array to guarantee variety on both flanks
     const shuffledTools = [...WEB_DEV_TOOLS].sort(() => Math.random() - 0.5);
 
-    // Create particles with guaranteed balanced distribution across both Left (0-50%) and Right (50-100%)
+    // Create particles with guaranteed balanced distribution across left and right flanks
     const particles: Particle[] = [];
     for (let i = 0; i < particleCount; i++) {
-      const depth = 0.5 + Math.random() * 0.9;
+      const depth = 0.6 + Math.random() * 0.8;
       const colorScheme = [colors.primary, colors.secondary, colors.accent][i % 3];
-      const baseAlpha = 0.45 + Math.random() * 0.45;
+      const baseAlpha = 0.4 + Math.random() * 0.4;
       const toolName = shuffledTools[i % shuffledTools.length];
-      // Show ambient text on 50% of particles across both sides so both flanks are populated
       const showAmbientLabel = i % 2 === 0;
 
-      // Stratified X distribution: Even indices on left half, odd indices on right half
+      // Stratified X distribution
       const isLeft = i % 2 === 0;
       const initialX = isLeft
-        ? Math.random() * (width * 0.48) + 20
-        : (width * 0.52) + Math.random() * (width * 0.45);
+        ? Math.random() * (width * 0.46) + 15
+        : width * 0.54 + Math.random() * (width * 0.44);
 
       particles.push({
         x: initialX,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.65 * depth * currentSpeed,
-        vy: (Math.random() - 0.5) * 0.65 * depth * currentSpeed,
-        radius: (2.0 + Math.random() * 2.2) * depth,
-        baseRadius: (2.0 + Math.random() * 2.2) * depth,
+        vx: (Math.random() - 0.5) * 0.5 * depth * currentSpeed,
+        vy: (Math.random() - 0.5) * 0.5 * depth * currentSpeed,
+        radius: (2.0 + Math.random() * 2.0) * depth,
+        baseRadius: (2.0 + Math.random() * 2.0) * depth,
         alpha: baseAlpha,
-        baseAlpha: baseAlpha,
+        baseAlpha,
         color: colorScheme,
         toolName,
         showAmbientLabel,
-        size: Math.floor(11 + Math.random() * 3),
-        angle: Math.random() * Math.PI * 2,
-        spinSpeed: (Math.random() - 0.5) * 0.01,
         depth,
       });
     }
@@ -262,26 +250,28 @@ export const LiveWallpaperCanvas: React.FC<LiveWallpaperCanvasProps> = ({
       shockwaves.current.push({
         x: clickX,
         y: clickY,
-        radius: 5,
-        maxRadius: Math.min(width, height) * 0.35,
-        alpha: 0.85,
+        radius: 4,
+        maxRadius: Math.min(width, height) * 0.3,
+        alpha: 0.8,
         color: isDarkMode() ? 'rgba(0, 242, 254, ' : 'rgba(29, 78, 216, ',
       });
 
-      // Apply impulsive force to nearby particles
-      particles.forEach((p) => {
+      // Apply impulsive force
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
         const dx = p.x - clickX;
         const dy = p.y - clickY;
-        const dist = Math.hypot(dx, dy);
-        if (dist < 220 && dist > 0) {
+        const distSq = dx * dx + dy * dy;
+        if (distSq < 48400 && distSq > 0) { // 220px squared
+          const dist = Math.sqrt(distSq);
           const force = (220 - dist) / 220;
-          p.vx += (dx / dist) * force * 4.5;
-          p.vy += (dy / dist) * force * 4.5;
+          p.vx += (dx / dist) * force * 3.5;
+          p.vy += (dy / dist) * force * 3.5;
         }
-      });
+      }
     };
 
-    // Touch support for mobile live wallpaper interaction
+    // Touch support for mobile interaction
     const handleTouchMove = (e: TouchEvent) => {
       if (!interactive || e.touches.length === 0) return;
       const rect = canvas.getBoundingClientRect();
@@ -296,22 +286,20 @@ export const LiveWallpaperCanvas: React.FC<LiveWallpaperCanvasProps> = ({
       mousePos.current.active = false;
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize, { passive: true });
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
     window.addEventListener('mouseleave', handleMouseLeave);
-    window.addEventListener('click', handleClick);
+    window.addEventListener('click', handleClick, { passive: true });
     window.addEventListener('touchmove', handleTouchMove, { passive: true });
-    window.addEventListener('touchend', handleTouchEnd);
+    window.addEventListener('touchend', handleTouchEnd, { passive: true });
 
-    // Watch dark mode class changes
+    // Dark mode observer
     const observer = new MutationObserver(() => {
       colors = getColors();
     });
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
 
-    let time = 0;
-
-    // Helper to draw clean floating web dev tool text without any boxes or borders
+    // High performance text renderer
     const drawFloatingText = (
       x: number,
       y: number,
@@ -320,216 +308,194 @@ export const LiveWallpaperCanvas: React.FC<LiveWallpaperCanvasProps> = ({
       alpha: number
     ) => {
       const dark = isDarkMode();
-      const fontSize = isHovered ? 13.5 : 11;
+      const fontSize = isHovered ? 13 : 11;
       const fontWeight = isHovered ? '700' : '600';
 
-      ctx.save();
       ctx.font = `${fontWeight} ${fontSize}px 'JetBrains Mono', 'Fira Code', monospace`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
 
       if (isHovered) {
-        // High-contrast glowing hover text with vibrant neon bloom (No box / No border)
-        if (dark) {
-          ctx.fillStyle = '#00F2FE';
-          ctx.shadowColor = '#00F2FE';
-          ctx.shadowBlur = 16;
-        } else {
-          // Light mode: Deep Electric Sapphire Blue (100% visible and crisp on white)
-          ctx.fillStyle = '#1E3A8A';
-          ctx.shadowColor = 'rgba(29, 78, 216, 0.75)';
-          ctx.shadowBlur = 12;
-        }
+        ctx.fillStyle = dark ? '#00F2FE' : '#1E3A8A';
         ctx.fillText(text, x, y);
       } else {
-        // Ambient clean floating text (Atmospheric background so foreground text remains 100% crisp)
         if (dark) {
-          ctx.fillStyle = `rgba(0, 242, 254, ${Math.min(0.85, alpha * 0.9)})`;
-          ctx.shadowColor = colors.glow;
-          ctx.shadowBlur = 8;
+          ctx.fillStyle = `rgba(0, 242, 254, ${Math.min(0.8, alpha * 0.85)})`;
         } else {
-          // Light mode: Gentle atmospheric blue background (Never obscures foreground headings/fonts)
-          ctx.fillStyle = `rgba(37, 99, 235, ${Math.min(0.32, Math.max(0.18, alpha * 0.38))})`;
-          ctx.shadowColor = 'rgba(37, 99, 235, 0.15)';
-          ctx.shadowBlur = 4;
+          ctx.fillStyle = `rgba(37, 99, 235, ${Math.min(0.35, Math.max(0.18, alpha * 0.38))})`;
         }
         ctx.fillText(text, x, y);
       }
-      ctx.restore();
     };
 
-    // Main 60fps Render Loop
-    const render = () => {
-      time += 0.015 * currentSpeed;
-      ctx.clearRect(0, 0, width, height);
+    let time = 0;
+    let lastTime = performance.now();
+    let isPaused = false;
 
+    // Visibility API listener: Pause RAF when tab is hidden to save 100% CPU/GPU
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        isPaused = true;
+      } else {
+        isPaused = false;
+        lastTime = performance.now();
+        if (!animationFrameId.current) {
+          animationFrameId.current = requestAnimationFrame(render);
+        }
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    // Main 120 FPS Render Loop (Delta-Time normalized)
+    const render = (currentTime: number) => {
+      if (isPaused) return;
+
+      const dt = Math.min((currentTime - lastTime) / 16.667, 2.0);
+      lastTime = currentTime;
+      time += 0.015 * currentSpeed * dt;
+
+      ctx.clearRect(0, 0, width, height);
       const dark = isDarkMode();
 
-      // -------------------------------------------------------------
-      // INTERACTIVE MOUSE HOVER SPOTLIGHT & ENERGY RING
-      // -------------------------------------------------------------
+      // Spotlight on hover
       if (mousePos.current.active) {
         const mx = mousePos.current.x;
         const my = mousePos.current.y;
+        const spotRadius = isMobileScreen ? 140 : 200;
 
-        // Vivid radial spotlight halo on hover
-        const spotRadius = 240;
         const spotGrad = ctx.createRadialGradient(mx, my, 0, mx, my, spotRadius);
         if (dark) {
-          spotGrad.addColorStop(0, 'rgba(0, 242, 254, 0.25)');
-          spotGrad.addColorStop(0.35, 'rgba(139, 92, 246, 0.15)');
-          spotGrad.addColorStop(0.7, 'rgba(0, 242, 254, 0.04)');
+          spotGrad.addColorStop(0, 'rgba(0, 242, 254, 0.18)');
+          spotGrad.addColorStop(0.5, 'rgba(139, 92, 246, 0.08)');
           spotGrad.addColorStop(1, 'transparent');
         } else {
-          // Light mode vibrant sapphire spotlight
-          spotGrad.addColorStop(0, 'rgba(29, 78, 216, 0.22)');
-          spotGrad.addColorStop(0.35, 'rgba(109, 40, 217, 0.14)');
-          spotGrad.addColorStop(0.7, 'rgba(29, 78, 216, 0.04)');
+          spotGrad.addColorStop(0, 'rgba(29, 78, 216, 0.16)');
+          spotGrad.addColorStop(0.5, 'rgba(109, 40, 217, 0.08)');
           spotGrad.addColorStop(1, 'transparent');
         }
 
-        ctx.save();
         ctx.fillStyle = spotGrad;
         ctx.beginPath();
         ctx.arc(mx, my, spotRadius, 0, Math.PI * 2);
         ctx.fill();
 
-        // High-contrast pulsing interactive hover ring around cursor
-        const pulseR = 26 + Math.sin(time * 5) * 5;
+        // Pulsing cursor ring
+        const pulseR = 22 + Math.sin(time * 4) * 4;
         ctx.beginPath();
         ctx.arc(mx, my, pulseR, 0, Math.PI * 2);
-        ctx.strokeStyle = dark ? 'rgba(0, 242, 254, 0.85)' : 'rgba(29, 78, 216, 0.95)';
-        ctx.lineWidth = 2.2;
-        ctx.shadowColor = dark ? '#00F2FE' : '#1D4ED8';
-        ctx.shadowBlur = 14;
+        ctx.strokeStyle = dark ? 'rgba(0, 242, 254, 0.75)' : 'rgba(29, 78, 216, 0.85)';
+        ctx.lineWidth = 1.8;
         ctx.stroke();
 
-        // Inner glowing core
         ctx.beginPath();
-        ctx.arc(mx, my, 4.5, 0, Math.PI * 2);
+        ctx.arc(mx, my, 4, 0, Math.PI * 2);
         ctx.fillStyle = dark ? '#00F2FE' : '#1D4ED8';
-        ctx.shadowColor = dark ? '#00F2FE' : '#1D4ED8';
-        ctx.shadowBlur = 12;
         ctx.fill();
-        ctx.restore();
       }
 
-      // -------------------------------------------------------------
-      // MODE 1: CYBER SYNAPSE (Nodes, Connection Lines, Web Dev Tools)
-      // -------------------------------------------------------------
+      // MODE 1: CYBER SYNAPSE
       if (mode === 'synapse') {
-        const maxDist = 140;
-        const mouseDist = 220; // Increased radius for hover interaction
+        const maxDist = isMobileScreen ? 110 : 135;
+        const maxDistSq = maxDist * maxDist;
+        const mouseDist = isMobileScreen ? 140 : 200;
+        const mouseDistSq = mouseDist * mouseDist;
 
-        // Draw connections between particles
-        for (let i = 0; i < particles.length; i++) {
+        // Draw connections with squared distance check
+        const pLen = particles.length;
+        for (let i = 0; i < pLen; i++) {
           const p1 = particles[i];
 
-          for (let j = i + 1; j < particles.length; j++) {
+          for (let j = i + 1; j < pLen; j++) {
             const p2 = particles[j];
             const dx = p1.x - p2.x;
             const dy = p1.y - p2.y;
-            const dist = Math.hypot(dx, dy);
+            const distSq = dx * dx + dy * dy;
 
-            if (dist < maxDist) {
-              const alpha = (1 - dist / maxDist) * (dark ? 0.28 : 0.38) * Math.min(p1.alpha, p2.alpha);
+            if (distSq < maxDistSq) {
+              const dist = Math.sqrt(distSq);
+              const alpha = (1 - dist / maxDist) * (dark ? 0.26 : 0.35) * Math.min(p1.alpha, p2.alpha);
               ctx.beginPath();
               ctx.moveTo(p1.x, p1.y);
               ctx.lineTo(p2.x, p2.y);
               ctx.strokeStyle = `rgba(${colors.line}, ${alpha})`;
-              ctx.lineWidth = (dark ? 0.95 : 1.15) * ((p1.depth + p2.depth) / 2);
+              ctx.lineWidth = (dark ? 0.9 : 1.1) * ((p1.depth + p2.depth) / 2);
               ctx.stroke();
             }
           }
 
-          // HIGH VISIBILITY Connection to mouse on hover (Both Left & Right sides)
+          // Mouse line connection
           if (mousePos.current.active) {
             const dx = p1.x - mousePos.current.x;
             const dy = p1.y - mousePos.current.y;
-            const dist = Math.hypot(dx, dy);
+            const distSq = dx * dx + dy * dy;
 
-            if (dist < mouseDist) {
+            if (distSq < mouseDistSq) {
+              const dist = Math.sqrt(distSq);
               const normDist = 1 - dist / mouseDist;
-              const alpha = Math.min(1.0, normDist * 1.25);
+              const alpha = Math.min(1.0, normDist * 1.2);
 
-              // Vivid gradient line from particle to cursor
-              const lineGrad = ctx.createLinearGradient(p1.x, p1.y, mousePos.current.x, mousePos.current.y);
-              lineGrad.addColorStop(0, `${p1.color}${alpha * 0.85})`);
-              lineGrad.addColorStop(1, dark ? `rgba(0, 242, 254, ${alpha})` : `rgba(29, 78, 216, ${alpha * 0.95})`);
-
-              ctx.save();
               ctx.beginPath();
               ctx.moveTo(p1.x, p1.y);
               ctx.lineTo(mousePos.current.x, mousePos.current.y);
-              ctx.strokeStyle = lineGrad;
-              ctx.lineWidth = (dark ? 2.0 : 2.4) * normDist + 0.8;
-              ctx.shadowColor = dark ? '#00F2FE' : '#1D4ED8';
-              ctx.shadowBlur = 12 * normDist;
+              ctx.strokeStyle = dark ? `rgba(0, 242, 254, ${alpha * 0.8})` : `rgba(29, 78, 216, ${alpha * 0.85})`;
+              ctx.lineWidth = 1.6 * normDist + 0.6;
               ctx.stroke();
 
-              // Moving energy particle spark along the hover line
-              const sparkProgress = (time * 2.5 + i * 0.2) % 1;
-              const sparkX = p1.x + (mousePos.current.x - p1.x) * sparkProgress;
-              const sparkY = p1.y + (mousePos.current.y - p1.y) * sparkProgress;
-              ctx.beginPath();
-              ctx.arc(sparkX, sparkY, 2.5, 0, Math.PI * 2);
-              ctx.fillStyle = dark ? '#FFFFFF' : '#1D4ED8';
-              ctx.shadowColor = dark ? '#00F2FE' : '#1D4ED8';
-              ctx.shadowBlur = 10;
-              ctx.fill();
-              ctx.restore();
-
-              // Magnetic attraction pull towards hover position
-              const pullForce = normDist * 0.045;
+              // Pull force
+              const pullForce = normDist * 0.04 * dt;
               p1.vx -= (dx / dist) * pullForce;
               p1.vy -= (dy / dist) * pullForce;
             }
           }
         }
 
-        // Draw particles & Web Dev Tool Badges across both sides
-        particles.forEach((p) => {
+        // Draw particle nodes and badges
+        for (let i = 0; i < pLen; i++) {
+          const p = particles[i];
+          let isNearMouse = false;
           let extraScale = 1;
           let extraAlpha = 1;
-          let isNearMouse = false;
 
           if (mousePos.current.active) {
-            const dist = Math.hypot(p.x - mousePos.current.x, p.y - mousePos.current.y);
-            if (dist < 200) {
-              const hoverFactor = 1 - dist / 200;
-              extraScale = 1 + hoverFactor * 1.0;
-              extraAlpha = 1 + hoverFactor * 0.8;
+            const dx = p.x - mousePos.current.x;
+            const dy = p.y - mousePos.current.y;
+            const distSq = dx * dx + dy * dy;
+            if (distSq < 32400) { // 180px squared
+              const dist = Math.sqrt(distSq);
+              const hoverFactor = 1 - dist / 180;
+              extraScale = 1 + hoverFactor * 0.8;
+              extraAlpha = 1 + hoverFactor * 0.6;
               isNearMouse = true;
             }
           }
 
-          // If node is near mouse OR has ambient label enabled -> draw Web Dev Tool Label
           if (isNearMouse || p.showAmbientLabel) {
             drawFloatingText(p.x, p.y, p.toolName, isNearMouse, p.alpha * extraAlpha);
           } else {
-            // Standard luminous particle node
+            // Dual-pass glow without expensive shadowBlur
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.radius * extraScale * 1.8, 0, Math.PI * 2);
+            ctx.fillStyle = `${p.color}${Math.min(0.2, p.alpha * 0.25)})`;
+            ctx.fill();
+
             ctx.beginPath();
             ctx.arc(p.x, p.y, p.radius * extraScale, 0, Math.PI * 2);
             ctx.fillStyle = `${p.color}${Math.min(1, p.alpha * extraAlpha)})`;
-            ctx.shadowColor = colors.glow;
-            ctx.shadowBlur = 6;
             ctx.fill();
           }
-        });
+        }
       }
 
-      // -------------------------------------------------------------
-      // MODE 2: AURORA FLUID (Harmonic Sine Wave Ribbon Mesh)
-      // -------------------------------------------------------------
+      // MODE 2: AURORA FLUID
       else if (mode === 'aurora') {
-        const waveCount = 4;
-        const points = 24;
+        const waveCount = isMobileScreen ? 2 : 4;
+        const points = isMobileScreen ? 14 : 22;
         const sliceWidth = width / (points - 1);
 
         for (let w = 0; w < waveCount; w++) {
           const wavePhase = time + w * 1.8;
-          const baseY = height * (0.3 + w * 0.15);
-          const amplitude = 35 + w * 12;
+          const baseY = height * (0.32 + w * 0.14);
+          const amplitude = 30 + w * 10;
 
           ctx.beginPath();
           ctx.moveTo(0, height);
@@ -542,16 +508,17 @@ export const LiveWallpaperCanvas: React.FC<LiveWallpaperCanvasProps> = ({
             if (mousePos.current.active) {
               const dx = x - mousePos.current.x;
               const dy = baseY - mousePos.current.y;
-              const dist = Math.hypot(dx, dy);
-              if (dist < 260) {
-                mouseInfluence = Math.sin((1 - dist / 260) * Math.PI) * 65;
+              const distSq = dx * dx + dy * dy;
+              if (distSq < 57600) {
+                const dist = Math.sqrt(distSq);
+                mouseInfluence = Math.sin((1 - dist / 240) * Math.PI) * 50;
               }
             }
 
             const y =
               baseY +
               Math.sin(p * 0.35 + wavePhase) * amplitude +
-              Math.cos(p * 0.2 - wavePhase * 0.7) * (amplitude * 0.5) +
+              Math.cos(p * 0.2 - wavePhase * 0.7) * (amplitude * 0.45) +
               mouseInfluence;
 
             ctx.lineTo(x, y);
@@ -561,116 +528,110 @@ export const LiveWallpaperCanvas: React.FC<LiveWallpaperCanvasProps> = ({
           ctx.closePath();
 
           const grad = ctx.createLinearGradient(0, baseY - amplitude, width, baseY + amplitude);
-          const alphaBase = 0.10 + w * 0.04;
+          const alphaBase = 0.08 + w * 0.03;
           grad.addColorStop(0, `${colors.primary}${alphaBase})`);
-          grad.addColorStop(0.5, `${colors.secondary}${alphaBase * 1.5})`);
-          grad.addColorStop(1, `${colors.accent}${alphaBase * 0.9})`);
+          grad.addColorStop(0.5, `${colors.secondary}${alphaBase * 1.4})`);
+          grad.addColorStop(1, `${colors.accent}${alphaBase * 0.8})`);
 
           ctx.fillStyle = grad;
           ctx.fill();
         }
 
-        // Ambient floating tool labels in Aurora mode
-        particles.slice(0, Math.floor(particles.length * 0.6)).forEach((p) => {
+        const subsetCount = Math.floor(particles.length * 0.6);
+        for (let i = 0; i < subsetCount; i++) {
+          const p = particles[i];
           let isHovered = false;
           if (mousePos.current.active) {
-            const dist = Math.hypot(p.x - mousePos.current.x, p.y - mousePos.current.y);
-            if (dist < 190) isHovered = true;
+            const dx = p.x - mousePos.current.x;
+            const dy = p.y - mousePos.current.y;
+            if (dx * dx + dy * dy < 28900) isHovered = true;
           }
           drawFloatingText(p.x, p.y, p.toolName, isHovered, p.alpha * 1.1);
-        });
+        }
       }
 
-      // -------------------------------------------------------------
-      // MODE 3: QUANTUM PARTICLE STORM (Vortex, Trails & Web Dev Chips)
-      // -------------------------------------------------------------
+      // MODE 3: QUANTUM PARTICLE STORM
       else if (mode === 'quantum') {
-        particles.forEach((p) => {
+        const pLen = particles.length;
+        for (let i = 0; i < pLen; i++) {
+          const p = particles[i];
           let isHovered = false;
 
           if (mousePos.current.active) {
             const dx = mousePos.current.x - p.x;
             const dy = mousePos.current.y - p.y;
-            const dist = Math.hypot(dx, dy);
+            const distSq = dx * dx + dy * dy;
 
-            if (dist < 280 && dist > 10) {
+            if (distSq < 62500 && distSq > 100) {
               isHovered = true;
-              // Tangential vortex spin + pull
+              const dist = Math.sqrt(distSq);
               const angle = Math.atan2(dy, dx);
               const perpAngle = angle + Math.PI / 2;
-              const force = (280 - dist) / 280;
+              const force = (250 - dist) / 250;
 
-              p.vx += Math.cos(perpAngle) * force * 0.4 + Math.cos(angle) * force * 0.2;
-              p.vy += Math.sin(perpAngle) * force * 0.4 + Math.sin(angle) * force * 0.2;
+              p.vx += (Math.cos(perpAngle) * force * 0.35 + Math.cos(angle) * force * 0.18) * dt;
+              p.vy += (Math.sin(perpAngle) * force * 0.35 + Math.sin(angle) * force * 0.18) * dt;
             }
           }
 
           if (isHovered || p.showAmbientLabel) {
             drawFloatingText(p.x, p.y, p.toolName, isHovered, p.alpha);
           } else {
-            // Quantum Particle rendering with velocity trail
             ctx.beginPath();
-            ctx.arc(p.x, p.y, p.radius * 1.3, 0, Math.PI * 2);
+            ctx.arc(p.x, p.y, p.radius * 1.2, 0, Math.PI * 2);
             ctx.fillStyle = `${p.color}${p.alpha})`;
-            ctx.shadowColor = colors.glow;
-            ctx.shadowBlur = 12;
             ctx.fill();
 
+            // Lightweight velocity tail
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
-            ctx.lineTo(p.x - p.vx * 6, p.y - p.vy * 6);
-            ctx.strokeStyle = `${p.color}${p.alpha * 0.5})`;
-            ctx.lineWidth = p.radius * 0.8;
+            ctx.lineTo(p.x - p.vx * 4, p.y - p.vy * 4);
+            ctx.strokeStyle = `${p.color}${p.alpha * 0.4})`;
+            ctx.lineWidth = p.radius * 0.7;
             ctx.stroke();
           }
-        });
+        }
       }
 
-      // -------------------------------------------------------------
-      // RENDER SHOCKWAVE RIPPLES
-      // -------------------------------------------------------------
+      // Shockwave Ripples
       for (let i = shockwaves.current.length - 1; i >= 0; i--) {
         const sw = shockwaves.current[i];
-        sw.radius += 4.5 * currentSpeed;
-        sw.alpha = Math.max(0, 0.85 * (1 - sw.radius / sw.maxRadius));
+        sw.radius += 4.2 * currentSpeed * dt;
+        sw.alpha = Math.max(0, 0.8 * (1 - sw.radius / sw.maxRadius));
 
         if (sw.radius >= sw.maxRadius || sw.alpha <= 0.01) {
           shockwaves.current.splice(i, 1);
           continue;
         }
 
-        ctx.save();
         ctx.beginPath();
         ctx.arc(sw.x, sw.y, sw.radius, 0, Math.PI * 2);
         ctx.strokeStyle = `${sw.color}${sw.alpha})`;
-        ctx.lineWidth = 3.0 * (1 - sw.radius / sw.maxRadius);
-        ctx.shadowColor = dark ? '#00F2FE' : '#0284C7';
-        ctx.shadowBlur = 18;
+        ctx.lineWidth = 2.4 * (1 - sw.radius / sw.maxRadius);
         ctx.stroke();
-        ctx.restore();
       }
 
-      // -------------------------------------------------------------
-      // UPDATE PARTICLE POSITIONS & PHYSICS
-      // -------------------------------------------------------------
-      particles.forEach((p) => {
-        p.x += p.vx;
-        p.y += p.vy;
+      // Update positions & physics with delta-time
+      const pLen = particles.length;
+      for (let i = 0; i < pLen; i++) {
+        const p = particles[i];
+        p.x += p.vx * dt;
+        p.y += p.vy * dt;
 
-        // Damping / Friction
+        // Damping
         p.vx *= 0.99;
         p.vy *= 0.99;
 
-        // Natural wandering drift
-        p.vx += (Math.random() - 0.5) * 0.04 * currentSpeed;
-        p.vy += (Math.random() - 0.5) * 0.04 * currentSpeed;
+        // Micro wandering drift
+        p.vx += (Math.random() - 0.5) * 0.03 * currentSpeed * dt;
+        p.vy += (Math.random() - 0.5) * 0.03 * currentSpeed * dt;
 
         // Boundary wrapping
-        if (p.x < -40) p.x = width + 40;
-        if (p.x > width + 40) p.x = -40;
+        if (p.x < -30) p.x = width + 30;
+        if (p.x > width + 30) p.x = -30;
         if (p.y < -30) p.y = height + 30;
         if (p.y > height + 30) p.y = -30;
-      });
+      }
 
       animationFrameId.current = requestAnimationFrame(render);
     };
@@ -687,6 +648,7 @@ export const LiveWallpaperCanvas: React.FC<LiveWallpaperCanvasProps> = ({
       window.removeEventListener('click', handleClick);
       window.removeEventListener('touchmove', handleTouchMove);
       window.removeEventListener('touchend', handleTouchEnd);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
       observer.disconnect();
     };
   }, [mode, density, speed, interactive]);
@@ -699,3 +661,5 @@ export const LiveWallpaperCanvas: React.FC<LiveWallpaperCanvasProps> = ({
     />
   );
 };
+
+export default LiveWallpaperCanvas;

@@ -17,7 +17,15 @@ export const LiveWallpaper: React.FC = () => {
     return (localStorage.getItem('zt_wallpaper_speed') as WallpaperSpeed) || 'normal';
   });
 
-  const [interactive, setInteractive] = useState<boolean>(true);
+  const [interactive, setInteractive] = useState<boolean>(() => {
+    const saved = localStorage.getItem('zt_wallpaper_interactive');
+    if (saved !== null) {
+      return saved === 'true';
+    }
+    // Default physics interaction is OFF on mobile to save CPU/touch interference, ON on desktop
+    const isMobile = typeof window !== 'undefined' && (window.innerWidth < 768 || ('ontouchstart' in window && window.innerWidth < 1024));
+    return !isMobile;
+  });
 
   // Sync to local storage
   useEffect(() => {
@@ -31,6 +39,10 @@ export const LiveWallpaper: React.FC = () => {
   useEffect(() => {
     localStorage.setItem('zt_wallpaper_speed', speed);
   }, [speed]);
+
+  useEffect(() => {
+    localStorage.setItem('zt_wallpaper_interactive', String(interactive));
+  }, [interactive]);
 
   return (
     <>

@@ -17,14 +17,15 @@ import {
 import { SEO } from '@/components/common/SEO';
 import { Button } from '@/components/common/Button';
 import { ProjectCard } from '@/components/cards/ProjectCard';
-import { projectsData } from '@/data/projects';
+import { useAdmin } from '@/context/AdminContext';
 import { fadeIn, staggerContainer } from '@/animations/variants';
 
 export const ProjectDetails: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
+  const { projects } = useAdmin();
   const navigate = useNavigate();
 
-  const project = projectsData.find((p) => p.slug === slug || p.id === slug);
+  const project = projects.find((p) => p.slug === slug || p.id === slug);
 
   if (!project) {
     return (
@@ -36,7 +37,7 @@ export const ProjectDetails: React.FC = () => {
     );
   }
 
-  const relatedProjects = projectsData.filter((p) => p.id !== project.id).slice(0, 2);
+  const relatedProjects = projects.filter((p) => p.id !== project.id).slice(0, 2);
 
   return (
     <div className="relative pb-24">

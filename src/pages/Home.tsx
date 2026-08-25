@@ -29,11 +29,12 @@ import { TechOrbit } from '@/components/interactive/TechOrbit';
 import { ProcessTimeline } from '@/components/interactive/ProcessTimeline';
 import { agencyData } from '@/data/agency';
 import { servicesData } from '@/data/services';
-import { projectsData } from '@/data/projects';
 import { testimonialsData } from '@/data/testimonials';
+import { useAdmin } from '@/context/AdminContext';
 import { fadeIn, staggerContainer } from '@/animations/variants';
 
 export const Home: React.FC = () => {
+  const { projects } = useAdmin();
   const [activeTestimonialIdx, setActiveTestimonialIdx] = useState(0);
 
   const nextTestimonial = () => {
@@ -128,16 +129,22 @@ export const Home: React.FC = () => {
                       src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100&auto=format&fit=crop"
                       alt="Client Avatar"
                       className="w-8 h-8 rounded-full border-2 border-surface-raised object-cover"
+                      loading="lazy"
+                      decoding="async"
                     />
                     <img
                       src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&auto=format&fit=crop"
                       alt="Client Avatar"
                       className="w-8 h-8 rounded-full border-2 border-surface-raised object-cover"
+                      loading="lazy"
+                      decoding="async"
                     />
                     <img
                       src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=100&auto=format&fit=crop"
                       alt="Client Avatar"
                       className="w-8 h-8 rounded-full border-2 border-surface-raised object-cover"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                   <div className="flex flex-col">
@@ -161,12 +168,12 @@ export const Home: React.FC = () => {
               </motion.div>
             </motion.div>
 
-            {/* Right Column: Interactive Visual Showcase */}
+            {/* Right Column: Interactive Visual Showcase (Desktop Only) */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 30 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="lg:col-span-5 relative"
+              className="hidden lg:block lg:col-span-5 relative"
             >
               {/* Outer Glowing Canvas Frame */}
               <div className="relative rounded-3xl bg-gradient-to-b from-brand-cyan/20 to-brand-purple/20 p-1 backdrop-blur-2xl border border-edge/30 shadow-2xl">
@@ -395,7 +402,7 @@ export const Home: React.FC = () => {
 
           {/* Project Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projectsData.slice(0, 3).map((project) => (
+            {projects.slice(0, 3).map((project) => (
               <ProjectCard key={project.id} project={project} featured />
             ))}
           </div>

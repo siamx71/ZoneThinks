@@ -1,16 +1,25 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, Check, X, HelpCircle, Shield, ArrowRight } from 'lucide-react';
+import { Sparkles, ArrowRight } from 'lucide-react';
 import { SEO } from '@/components/common/SEO';
-import { SectionHeading } from '@/components/common/SectionHeading';
 import { PricingCard } from '@/components/cards/PricingCard';
 import { Button } from '@/components/common/Button';
-import { pricingPlans } from '@/data/pricing';
+import { PricingTier } from '@/data/pricing';
+import { useAdmin } from '@/context/AdminContext';
+import { PurchaseOrderModal } from '@/components/interactive/PurchaseOrderModal';
 import { cn } from '@/utils/cn';
 import { staggerContainer } from '@/animations/variants';
 
 export const Pricing: React.FC = () => {
+  const { pricingPlans } = useAdmin();
   const [billingCycle, setBillingCycle] = useState<'project' | 'monthly'>('project');
+  const [selectedPlan, setSelectedPlan] = useState<PricingTier | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleSelectPlan = (plan: PricingTier) => {
+    setSelectedPlan(plan);
+    setIsModalOpen(true);
+  };
 
   return (
     <div className="relative pb-24">
@@ -82,11 +91,20 @@ export const Pricing: React.FC = () => {
                 key={plan.id}
                 plan={plan}
                 billingCycle={billingCycle}
+                onSelectPlan={handleSelectPlan}
               />
             ))}
           </div>
         </div>
       </section>
+
+      {/* Purchase Order Modal */}
+      <PurchaseOrderModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        plan={selectedPlan}
+        defaultCycle={billingCycle}
+      />
 
       {/* FAQ Banner */}
       <section className="py-16">

@@ -23,8 +23,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, featured = fa
         <img
           src={project.heroImage}
           alt={project.title}
-          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out filter brightness-[0.94] group-hover:brightness-100"
+          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out filter brightness-[0.94] group-hover:brightness-100"
           loading="lazy"
+          decoding="async"
         />
 
         {/* Gradient Overlay for Text Legibility */}
