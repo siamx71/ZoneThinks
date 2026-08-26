@@ -25,7 +25,7 @@ export const Contact: React.FC = () => {
       />
 
       {/* Hero */}
-      <section className="pt-12 pb-16 relative">
+      <section className="pt-4 pb-8 sm:pt-6 sm:pb-10 relative">
         <div className="max-w-7xl 2xl:max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
           <motion.div
             variants={staggerContainer(0.1, 0)}
@@ -33,10 +33,9 @@ export const Contact: React.FC = () => {
             animate="show"
             className="max-w-4xl xl:max-w-5xl"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold uppercase tracking-wider bg-brand-cyan/10 border border-brand-cyan/25 text-brand-cyan mb-6">
-              <Sparkles className="w-4 h-4" />
-              <span>Initiate Your Project</span>
-            </div>
+            <span className="text-xs font-mono font-semibold uppercase tracking-widest text-brand-cyan mb-3 block">
+              // Initiate Your Project
+            </span>
 
             <h1 className="font-heading font-black text-4xl sm:text-6xl xl:text-7xl text-text-primary tracking-tight leading-[1.1]">
               Let's Build Something <span className="text-gradient-cyan">Exceptional</span>.

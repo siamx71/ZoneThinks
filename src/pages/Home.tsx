@@ -53,14 +53,14 @@ export const Home: React.FC = () => {
       />
 
       {/* Symmetrical Dual-Sided Hero Ambient Lighting */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[700px] bg-[radial-gradient(ellipse_60%_50%_at_5%_20%,rgba(0,242,254,0.18),transparent_70%),radial-gradient(ellipse_60%_50%_at_95%_20%,rgba(139,92,246,0.18),transparent_70%)] pointer-events-none opacity-90" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[450px] bg-[radial-gradient(ellipse_60%_50%_at_5%_20%,rgba(0,242,254,0.18),transparent_70%),radial-gradient(ellipse_60%_50%_at_95%_20%,rgba(139,92,246,0.18),transparent_70%)] pointer-events-none opacity-90" />
 
       {/* ========================================================================= */}
       {/* 1. HERO SECTION */}
       {/* ========================================================================= */}
-      <section className="relative pt-12 pb-20 md:pt-20 md:pb-32">
+      <section className="relative pt-2 pb-8 sm:pt-4 sm:pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
             
             {/* Left Column: Hero Copy & Actions */}
             <motion.div
@@ -69,20 +69,20 @@ export const Home: React.FC = () => {
               animate="show"
               className="lg:col-span-7 flex flex-col items-start"
             >
-              {/* Status Badge */}
+              {/* Status Tag */}
               <motion.div
                 variants={fadeIn('up', 0.1)}
-                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-surface-overlay/80 border border-brand-cyan/30 text-brand-cyan mb-6 backdrop-blur-md shadow-sm"
+                className="mb-3"
               >
-                <span className="w-2 h-2 rounded-full bg-brand-cyan animate-ping" />
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>Next-Generation Digital Product Agency</span>
+                <span className="text-xs font-mono font-bold uppercase tracking-widest text-brand-cyan">
+                  // High-Performance Digital Engineering
+                </span>
               </motion.div>
 
               {/* Dramatic Headline */}
               <motion.h1
                 variants={fadeIn('up', 0.2)}
-                className="font-heading font-black text-4xl sm:text-6xl lg:text-7xl text-text-primary tracking-tight leading-[1.08] uppercase"
+                className="font-heading font-black text-3xl sm:text-5xl lg:text-6xl text-text-primary tracking-tight leading-[1.1] uppercase"
               >
                 WE BUILD <span className="text-gradient-cyan">DIGITAL EXPERIENCES</span> THAT GROW BUSINESSES.
               </motion.h1>
@@ -90,7 +90,7 @@ export const Home: React.FC = () => {
               {/* Supporting Text */}
               <motion.p
                 variants={fadeIn('up', 0.3)}
-                className="mt-6 text-base sm:text-xl text-text-secondary font-normal leading-relaxed max-w-2xl"
+                className="mt-4 sm:mt-5 text-sm sm:text-lg text-text-secondary font-normal leading-relaxed max-w-2xl"
               >
                 ZoneThinks IT engineers high-speed web platforms, enterprise SaaS ecosystems, and bespoke conversion engines. We merge architectural rigor with cutting-edge UI design.
               </motion.p>
@@ -98,12 +98,12 @@ export const Home: React.FC = () => {
               {/* CTAs */}
               <motion.div
                 variants={fadeIn('up', 0.4)}
-                className="mt-8 sm:mt-10 flex flex-wrap items-center gap-4 w-full sm:w-auto"
+                className="mt-6 sm:mt-8 flex flex-wrap items-center gap-3 sm:gap-4 w-full sm:w-auto"
               >
                 <Button
                   to="/contact"
                   variant="primary"
-                  size="lg"
+                  size="md"
                   rightIcon={<ArrowRight className="w-4 h-4" />}
                 >
                   Start a Project
@@ -111,7 +111,7 @@ export const Home: React.FC = () => {
                 <Button
                   to="/projects"
                   variant="secondary"
-                  size="lg"
+                  size="md"
                   rightIcon={<ArrowUpRight className="w-4 h-4" />}
                 >
                   View Our Work
@@ -121,66 +121,62 @@ export const Home: React.FC = () => {
               {/* Micro-Trust Signals */}
               <motion.div
                 variants={fadeIn('up', 0.5)}
-                className="mt-12 flex flex-wrap items-center gap-6 sm:gap-8 pt-8 border-t border-edge/20"
+                className="mt-8 flex flex-wrap items-center gap-5 sm:gap-6 pt-5 border-t border-edge/20"
               >
                 <div className="flex items-center gap-2">
                   <div className="flex -space-x-2">
                     <img
                       src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100&auto=format&fit=crop"
                       alt="Client Avatar"
-                      className="w-8 h-8 rounded-full border-2 border-surface-raised object-cover"
+                      className="w-7 h-7 rounded-full border-2 border-surface-raised object-cover"
                       loading="lazy"
                       decoding="async"
                     />
                     <img
                       src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&auto=format&fit=crop"
                       alt="Client Avatar"
-                      className="w-8 h-8 rounded-full border-2 border-surface-raised object-cover"
+                      className="w-7 h-7 rounded-full border-2 border-surface-raised object-cover"
                       loading="lazy"
                       decoding="async"
                     />
                     <img
-                      src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=100&auto=format&fit=crop"
+                      src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=100&auto=format&fit=crop"
                       alt="Client Avatar"
-                      className="w-8 h-8 rounded-full border-2 border-surface-raised object-cover"
+                      className="w-7 h-7 rounded-full border-2 border-surface-raised object-cover"
                       loading="lazy"
                       decoding="async"
                     />
                   </div>
-                  <div className="flex flex-col">
-                    <div className="flex items-center text-amber-400">
+                  <div className="flex items-center gap-1 text-xs">
+                    <div className="flex text-amber-400">
                       {[...Array(5)].map((_, i) => (
                         <Star key={i} className="w-3 h-3 fill-amber-400" />
                       ))}
                     </div>
-                    <span className="text-[11px] font-mono text-text-muted">
-                      5.0 (50+ Verified Client Reviews)
-                    </span>
+                    <span className="font-bold text-text-primary">5.0</span>
+                    <span className="text-text-muted">(50+ Verified Client Reviews)</span>
                   </div>
                 </div>
 
-                <div className="h-6 w-[1px] bg-edge/30 hidden sm:block" />
-
-                <div className="text-[11px] font-mono text-text-secondary flex items-center gap-1.5">
+                <div className="flex items-center gap-2 text-xs text-text-muted">
                   <Zap className="w-3.5 h-3.5 text-brand-cyan" />
-                  <span>Sub-1s LCP Load Guarantee</span>
+                  <span>Sub 1s LCP Load Guarantee</span>
                 </div>
               </motion.div>
             </motion.div>
 
-            {/* Right Column: Interactive Visual Showcase (Desktop Only) */}
+            {/* Right Column: Interactive Tech Architecture Visual (Desktop Only) */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 30 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
+              variants={fadeIn('left', 0.2)}
+              initial="hidden"
+              animate="show"
               className="hidden lg:block lg:col-span-5 relative"
             >
-              {/* Outer Glowing Canvas Frame */}
-              <div className="relative rounded-3xl bg-gradient-to-b from-brand-cyan/20 to-brand-purple/20 p-1 backdrop-blur-2xl border border-edge/30 shadow-2xl">
+              <div className="relative rounded-3xl p-1 bg-gradient-to-b from-brand-cyan/40 via-brand-purple/20 to-transparent shadow-2xl">
                 <div className="rounded-[22px] bg-surface-raised p-5 sm:p-6 overflow-hidden relative">
                   
                   {/* Mock IDE / Dashboard Header */}
-                  <div className="flex items-center justify-between pb-4 mb-4 border-b border-edge/20">
+                  <div className="flex items-center justify-between pb-3 mb-3 border-b border-edge/20">
                     <div className="flex items-center gap-2">
                       <div className="w-3 h-3 rounded-full bg-rose-500/80" />
                       <div className="w-3 h-3 rounded-full bg-amber-500/80" />
@@ -196,7 +192,7 @@ export const Home: React.FC = () => {
                   </div>
 
                   {/* Simulated High-Tech Code & System Telemetry */}
-                  <div className="space-y-2 font-mono text-xs text-text-secondary">
+                  <div className="space-y-1.5 font-mono text-xs text-text-secondary">
                     <div className="text-text-muted">// Deploying Next.js Edge Architecture</div>
                     <div>
                       <span className="text-brand-purple font-bold">const</span>{' '}
@@ -219,27 +215,23 @@ export const Home: React.FC = () => {
                     <div>{'}'});</div>
                   </div>
 
-                  {/* Visual UI Preview Box */}
-                  <div className="mt-5 p-4 rounded-xl bg-surface-overlay border border-edge/20 relative overflow-hidden">
-                    <div className="flex items-center justify-between mb-3">
-                      <div className="flex items-center gap-2">
-                        <div className="w-7 h-7 rounded-lg bg-brand-cyan/20 text-brand-cyan flex items-center justify-center font-bold text-xs">
-                          ZT
-                        </div>
-                        <span className="text-xs font-bold text-text-primary">Revenue Pipeline Velocity</span>
-                      </div>
-                      <span className="text-xs font-mono text-emerald-500 dark:text-emerald-400 font-bold">+240.5%</span>
+                  {/* Real-time System Metrics Graph */}
+                  <div className="mt-4 pt-3 border-t border-edge/20">
+                    <div className="flex items-center justify-between text-xs font-mono mb-2">
+                      <span className="text-text-muted flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-brand-cyan animate-ping" />
+                        Revenue Pipeline Velocity
+                      </span>
+                      <span className="text-emerald-500 dark:text-emerald-400 font-bold">+248.5%</span>
                     </div>
-
-                    {/* Mini Wave Chart Graphic */}
-                    <div className="h-16 flex items-end gap-1.5 pt-2">
-                      {[30, 45, 38, 60, 52, 75, 68, 92, 85, 100].map((h, i) => (
+                    <div className="h-10 w-full flex items-end gap-1.5 pt-1">
+                      {[40, 65, 45, 80, 55, 90, 75, 100].map((h, i) => (
                         <motion.div
                           key={i}
                           initial={{ height: 0 }}
                           animate={{ height: `${h}%` }}
-                          transition={{ duration: 0.6, delay: i * 0.05 }}
-                          className="flex-1 bg-gradient-to-t from-brand-purple/40 to-brand-cyan rounded-t-sm"
+                          transition={{ duration: 0.8, delay: i * 0.08 }}
+                          className="flex-1 bg-gradient-to-t from-brand-cyan/30 to-brand-cyan rounded-t-sm"
                         />
                       ))}
                     </div>
@@ -249,10 +241,10 @@ export const Home: React.FC = () => {
                   <motion.div
                     animate={{ y: [0, -8, 0] }}
                     transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
-                    className="absolute -top-3 -right-3 p-3 rounded-2xl bg-surface-raised/95 backdrop-blur-xl border border-brand-cyan/40 shadow-glow-cyan flex items-center gap-2 text-xs"
+                    className="absolute -top-3 -right-3 p-2.5 rounded-2xl bg-surface-raised/95 backdrop-blur-xl border border-brand-cyan/40 shadow-glow-cyan flex items-center gap-2 text-xs"
                   >
                     <div className="p-1.5 rounded-lg bg-brand-cyan text-black font-bold">
-                      <TrendingUp className="w-4 h-4" />
+                      <TrendingUp className="w-3.5 h-3.5" />
                     </div>
                     <div>
                       <div className="font-bold text-text-primary">+148% CRO</div>
@@ -264,10 +256,10 @@ export const Home: React.FC = () => {
                   <motion.div
                     animate={{ y: [0, 8, 0] }}
                     transition={{ repeat: Infinity, duration: 5, ease: 'easeInOut', delay: 1 }}
-                    className="absolute -bottom-3 -left-3 p-3 rounded-2xl bg-surface-raised/95 backdrop-blur-xl border border-brand-purple/40 shadow-glow-purple flex items-center gap-2 text-xs"
+                    className="absolute -bottom-3 -left-3 p-2.5 rounded-2xl bg-surface-raised/95 backdrop-blur-xl border border-brand-purple/40 shadow-glow-purple flex items-center gap-2 text-xs"
                   >
                     <div className="p-1.5 rounded-lg bg-brand-purple text-white font-bold">
-                      <Zap className="w-4 h-4" />
+                      <Zap className="w-3.5 h-3.5" />
                     </div>
                     <div>
                       <div className="font-bold text-text-primary">&lt;0.5s Load</div>
@@ -289,53 +281,53 @@ export const Home: React.FC = () => {
       {/* ========================================================================= */}
       {/* 3. STATISTICS SECTION */}
       {/* ========================================================================= */}
-      <section className="py-20 relative">
+      <section className="py-12 sm:py-16 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="p-6 sm:p-8 rounded-3xl bg-surface-raised border border-edge/30 shadow-card-light dark:shadow-glass flex flex-col items-center text-center">
-              <span className="font-heading font-black text-4xl sm:text-5xl text-gradient-cyan mb-2">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+            <div className="p-5 sm:p-7 rounded-3xl bg-surface-raised border border-edge/30 shadow-card-light dark:shadow-glass flex flex-col items-center text-center">
+              <span className="font-heading font-black text-3xl sm:text-4xl text-gradient-cyan mb-1">
                 <AnimatedCounter value={85} suffix="+" />
               </span>
-              <span className="text-sm font-semibold text-text-primary font-heading">
+              <span className="text-xs sm:text-sm font-semibold text-text-primary font-heading">
                 Projects Delivered
               </span>
-              <span className="text-xs font-mono text-text-muted mt-1">
+              <span className="text-[11px] font-mono text-text-muted mt-1">
                 Zero-defect launches
               </span>
             </div>
 
-            <div className="p-6 sm:p-8 rounded-3xl bg-surface-raised border border-edge/30 shadow-card-light dark:shadow-glass flex flex-col items-center text-center">
-              <span className="font-heading font-black text-4xl sm:text-5xl text-gradient-purple mb-2">
+            <div className="p-5 sm:p-7 rounded-3xl bg-surface-raised border border-edge/30 shadow-card-light dark:shadow-glass flex flex-col items-center text-center">
+              <span className="font-heading font-black text-3xl sm:text-4xl text-gradient-purple mb-1">
                 <AnimatedCounter value={50} suffix="+" />
               </span>
-              <span className="text-sm font-semibold text-text-primary font-heading">
+              <span className="text-xs sm:text-sm font-semibold text-text-primary font-heading">
                 Happy Global Clients
               </span>
-              <span className="text-xs font-mono text-text-muted mt-1">
+              <span className="text-[11px] font-mono text-text-muted mt-1">
                 Across 14 countries
               </span>
             </div>
 
-            <div className="p-6 sm:p-8 rounded-3xl bg-surface-raised border border-edge/30 shadow-card-light dark:shadow-glass flex flex-col items-center text-center">
-              <span className="font-heading font-black text-4xl sm:text-5xl text-gradient-cyan mb-2">
+            <div className="p-5 sm:p-7 rounded-3xl bg-surface-raised border border-edge/30 shadow-card-light dark:shadow-glass flex flex-col items-center text-center">
+              <span className="font-heading font-black text-3xl sm:text-4xl text-gradient-cyan mb-1">
                 <AnimatedCounter value={99} suffix="%" />
               </span>
-              <span className="text-sm font-semibold text-text-primary font-heading">
+              <span className="text-xs sm:text-sm font-semibold text-text-primary font-heading">
                 Client Satisfaction
               </span>
-              <span className="text-xs font-mono text-text-muted mt-1">
+              <span className="text-[11px] font-mono text-text-muted mt-1">
                 Based on NPS surveys
               </span>
             </div>
 
-            <div className="p-6 sm:p-8 rounded-3xl bg-surface-raised border border-edge/30 shadow-card-light dark:shadow-glass flex flex-col items-center text-center">
-              <span className="font-heading font-black text-4xl sm:text-5xl text-gradient-purple mb-2">
+            <div className="p-5 sm:p-7 rounded-3xl bg-surface-raised border border-edge/30 shadow-card-light dark:shadow-glass flex flex-col items-center text-center">
+              <span className="font-heading font-black text-3xl sm:text-4xl text-gradient-purple mb-1">
                 <AnimatedCounter value={4} suffix="+ Yrs" />
               </span>
-              <span className="text-sm font-semibold text-text-primary font-heading">
+              <span className="text-xs sm:text-sm font-semibold text-text-primary font-heading">
                 Proven Track Record
               </span>
-              <span className="text-xs font-mono text-text-muted mt-1">
+              <span className="text-[11px] font-mono text-text-muted mt-1">
                 Engineering excellence
               </span>
             </div>
@@ -346,7 +338,7 @@ export const Home: React.FC = () => {
       {/* ========================================================================= */}
       {/* 4. SERVICES SECTION */}
       {/* ========================================================================= */}
-      <section className="py-20 relative bg-surface-overlay/40 border-y border-edge/20">
+      <section className="py-14 sm:py-18 relative bg-surface-overlay/40 border-y border-edge/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             badge="Full-Stack Capabilities"
@@ -361,7 +353,7 @@ export const Home: React.FC = () => {
             ))}
           </div>
 
-          <div className="mt-14 text-center">
+          <div className="mt-10 text-center">
             <Button
               to="/services"
               variant="secondary"
@@ -377,14 +369,13 @@ export const Home: React.FC = () => {
       {/* ========================================================================= */}
       {/* 5. FEATURED PROJECTS SHOWCASE */}
       {/* ========================================================================= */}
-      <section className="py-24 relative">
+      <section className="py-14 sm:py-18 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
             <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-brand-cyan/10 border border-brand-cyan/25 text-brand-cyan mb-4">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>Featured Case Studies</span>
-              </div>
+              <span className="text-xs font-mono font-bold uppercase tracking-widest text-brand-cyan mb-2 block">
+                // Selected Case Studies
+              </span>
               <h2 className="font-heading font-black text-3xl sm:text-5xl text-text-primary tracking-tight leading-tight">
                 Crafted with <span className="text-gradient-cyan">Artistic Precision</span> & Rigor
               </h2>
@@ -412,7 +403,7 @@ export const Home: React.FC = () => {
       {/* ========================================================================= */}
       {/* 6. HOW WE WORK (PROCESS TIMELINE) */}
       {/* ========================================================================= */}
-      <section className="py-24 relative bg-surface-overlay/30 border-y border-edge/20">
+      <section className="py-14 sm:py-18 relative bg-surface-overlay/30 border-y border-edge/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             badge="Proven Methodology"
@@ -428,7 +419,7 @@ export const Home: React.FC = () => {
       {/* ========================================================================= */}
       {/* 7. TECHNOLOGY STACK */}
       {/* ========================================================================= */}
-      <section className="py-24 relative">
+      <section className="py-14 sm:py-18 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             badge="Modern Tech Stack"
@@ -444,14 +435,13 @@ export const Home: React.FC = () => {
       {/* ========================================================================= */}
       {/* 8. TESTIMONIALS CAROUSEL */}
       {/* ========================================================================= */}
-      <section className="py-24 relative bg-surface-overlay/40 border-t border-edge/20">
+      <section className="py-14 sm:py-18 relative bg-surface-overlay/40 border-t border-edge/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
             <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-brand-cyan/10 border border-brand-cyan/25 text-brand-cyan mb-4">
-                <Star className="w-3.5 h-3.5 fill-brand-cyan" />
-                <span>Client Validation</span>
-              </div>
+              <span className="text-xs font-mono font-bold uppercase tracking-widest text-brand-cyan mb-2 block">
+                // Client Validation & Reviews
+              </span>
               <h2 className="font-heading font-black text-3xl sm:text-5xl text-text-primary tracking-tight leading-tight">
                 Don't Just Take Our Word. <span className="text-gradient-cyan">Hear From Leaders</span>.
               </h2>

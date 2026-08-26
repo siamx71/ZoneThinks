@@ -113,6 +113,17 @@
     background: rgb(var(--edge-strong));
   }
 
+  /* ── Performance Optimizations for Low-Spec & Mobile Devices ── */
+  section, footer {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 600px;
+  }
+
+  img, video {
+    content-visibility: auto;
+    transform: translateZ(0);
+  }
+
   /* ── Selection ── */
   ::selection {
     background: rgba(2, 132, 199, 0.25);

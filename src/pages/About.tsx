@@ -74,7 +74,7 @@ export const About: React.FC = () => {
       />
 
       {/* Hero Section */}
-      <section className="pt-12 pb-20 relative">
+      <section className="pt-4 pb-10 sm:pt-6 sm:pb-12 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             variants={staggerContainer(0.1, 0)}
@@ -82,10 +82,9 @@ export const About: React.FC = () => {
             animate="show"
             className="max-w-3xl"
           >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-brand-cyan/10 border border-brand-cyan/25 text-brand-cyan mb-6">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Who We Are & What Drives Us</span>
-            </div>
+            <span className="text-xs font-mono font-semibold uppercase tracking-widest text-brand-cyan mb-3 block">
+              // Who We Are & Our Mission
+            </span>
 
             <h1 className="font-heading font-black text-4xl sm:text-6xl text-text-primary tracking-tight leading-tight">
               We Don’t Just Build Websites. <span className="text-gradient-cyan">We Engineer Digital Growth.</span>
@@ -145,7 +144,7 @@ export const About: React.FC = () => {
       </section>
 
       {/* Core Values */}
-      <section className="py-24">
+      <section className="py-14 sm:py-18">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             badge="Our Guiding Principles"
@@ -181,7 +180,7 @@ export const About: React.FC = () => {
       </section>
 
       {/* Milestone Roadmap */}
-      <section className="py-20 bg-surface-overlay/30 border-y border-edge/20">
+      <section className="py-14 sm:py-18 bg-surface-overlay/30 border-y border-edge/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             badge="Our Evolution"
@@ -212,14 +211,13 @@ export const About: React.FC = () => {
       </section>
 
       {/* Leadership Team Preview */}
-      <section className="py-24">
+      <section className="py-14 sm:py-18">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
             <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-brand-cyan/10 border border-brand-cyan/25 text-brand-cyan mb-4">
-                <Users className="w-3.5 h-3.5" />
-                <span>The Minds Behind the Code</span>
-              </div>
+              <span className="text-xs font-mono font-bold uppercase tracking-widest text-brand-cyan mb-2 block">
+                // The Minds Behind the Code
+              </span>
               <h2 className="font-heading font-black text-3xl sm:text-5xl text-text-primary tracking-tight leading-tight">
                 Meet Our <span className="text-gradient-cyan">Leadership Team</span>
               </h2>

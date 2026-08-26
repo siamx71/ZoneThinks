@@ -58,7 +58,7 @@ export const Company: React.FC = () => {
       />
 
       {/* Hero Section */}
-      <section className="pt-12 pb-20 relative">
+      <section className="pt-4 pb-8 sm:pt-6 sm:pb-10 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             variants={staggerContainer(0.1, 0)}
@@ -66,10 +66,9 @@ export const Company: React.FC = () => {
             animate="show"
             className="max-w-3xl"
           >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-brand-cyan/10 border border-brand-cyan/25 text-brand-cyan mb-6">
-              <Building2 className="w-3.5 h-3.5" />
-              <span>Our Organization & Culture</span>
-            </div>
+            <span className="text-xs font-mono font-semibold uppercase tracking-widest text-brand-cyan mb-3 block">
+              // Organization & Culture
+            </span>
 
             <h1 className="font-heading font-black text-4xl sm:text-6xl text-text-primary tracking-tight leading-tight">
               An Elite Digital Strike Team <span className="text-gradient-cyan">Built for Scale</span>.
@@ -161,10 +160,9 @@ export const Company: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
             <div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-brand-cyan/10 border border-brand-cyan/25 text-brand-cyan mb-4">
-                <Users className="w-3.5 h-3.5" />
-                <span>Leadership Pod</span>
-              </div>
+              <span className="text-xs font-mono font-bold uppercase tracking-widest text-brand-cyan mb-2 block">
+                // Leadership Pod
+              </span>
               <h2 className="font-heading font-black text-3xl sm:text-4xl text-text-primary">
                 Meet the Architects
               </h2>
@@ -188,10 +186,9 @@ export const Company: React.FC = () => {
           <div className="p-8 sm:p-12 rounded-3xl bg-surface-raised border border-edge/30 shadow-card-light dark:shadow-glass">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               <div className="lg:col-span-8 space-y-4">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-semibold bg-brand-cyan/10 text-brand-cyan border border-brand-cyan/30">
-                  <Briefcase className="w-3.5 h-3.5" />
-                  <span>We're Hiring Globally</span>
-                </div>
+                <span className="text-xs font-mono font-bold uppercase tracking-widest text-brand-cyan block">
+                  // We're Hiring Globally
+                </span>
                 <h3 className="font-heading font-black text-2xl sm:text-3xl text-text-primary">
                   Ready to Build the Future with ZoneThinks IT?
                 </h3>

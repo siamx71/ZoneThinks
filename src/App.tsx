@@ -23,6 +23,7 @@ const BlogDetails = lazy(() => import('@/pages/BlogDetails').then((m) => ({ defa
 const Contact = lazy(() => import('@/pages/Contact').then((m) => ({ default: m.Contact })));
 const FAQ = lazy(() => import('@/pages/FAQ').then((m) => ({ default: m.FAQ })));
 const Careers = lazy(() => import('@/pages/Careers').then((m) => ({ default: m.Careers })));
+const AiAssistant = lazy(() => import('@/pages/AiAssistant').then((m) => ({ default: m.AiAssistant })));
 const NotFound = lazy(() => import('@/pages/NotFound').then((m) => ({ default: m.NotFound })));
 
 // Lazy-loaded Admin routes
@@ -60,6 +61,8 @@ export const App: React.FC = () => {
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/faq" element={<FAQ />} />
                   <Route path="/careers" element={<Careers />} />
+                  <Route path="/ai-assistant" element={<AiAssistant />} />
+                  <Route path="/friday" element={<AiAssistant />} />
                   <Route path="*" element={<NotFound />} />
                 </Route>
               </Routes>

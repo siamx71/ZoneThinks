@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { LiveWallpaperCanvas, WallpaperMode, WallpaperDensity, WallpaperSpeed } from './LiveWallpaperCanvas';
 import { LiveWallpaperHUD } from './LiveWallpaperHUD';
 import './live-wallpaper.css';
 
 export const LiveWallpaper: React.FC = () => {
+  const location = useLocation();
+
   // Read saved preference or default to 'synapse' mode
   const [mode, setMode] = useState<WallpaperMode>(() => {
     return (localStorage.getItem('zt_wallpaper_mode') as WallpaperMode) || 'synapse';
@@ -44,6 +47,12 @@ export const LiveWallpaper: React.FC = () => {
     localStorage.setItem('zt_wallpaper_interactive', String(interactive));
   }, [interactive]);
 
+  // Hide floating HUD on AI Assistant, Friday, Admin and mobile screens to prevent overlapping input fields
+  const isChatOrAdminPage = 
+    location.pathname.startsWith('/ai-assistant') || 
+    location.pathname.startsWith('/friday') || 
+    location.pathname.startsWith('/admin');
+
   return (
     <>
       <div
@@ -58,17 +67,14 @@ export const LiveWallpaper: React.FC = () => {
         <div className="live-wallpaper-cyber-grid" />
 
         {/* Layer 3: Balanced Dual-Sided Volumetric Aurora Light Beams */}
-        {/* Left Flank Glows */}
         <div className="live-wallpaper-glow-left-top" />
         <div className="live-wallpaper-glow-left-mid" />
         <div className="live-wallpaper-glow-left-bottom" />
-
-        {/* Right Flank Glows */}
         <div className="live-wallpaper-glow-right-top" />
         <div className="live-wallpaper-glow-right-mid" />
         <div className="live-wallpaper-glow-right-bottom" />
 
-        {/* Layer 4: Interactive Web Dev Canvas Engine (Balanced Nodes, Glyphs, Physics & Ripples) */}
+        {/* Layer 4: Interactive Canvas Engine */}
         <LiveWallpaperCanvas
           mode={mode}
           density={density}
@@ -77,17 +83,21 @@ export const LiveWallpaper: React.FC = () => {
         />
       </div>
 
-      {/* Floating HUD Controller for Visitors */}
-      <LiveWallpaperHUD
-        mode={mode}
-        setMode={setMode}
-        density={density}
-        setDensity={setDensity}
-        speed={speed}
-        setSpeed={setSpeed}
-        interactive={interactive}
-        setInteractive={setInteractive}
-      />
+      {/* Floating HUD Controller (Hidden on Chat & Admin pages to never obstruct typing) */}
+      {!isChatOrAdminPage && (
+        <div className="hidden md:block">
+          <LiveWallpaperHUD
+            mode={mode}
+            setMode={setMode}
+            density={density}
+            setDensity={setDensity}
+            speed={speed}
+            setSpeed={setSpeed}
+            interactive={interactive}
+            setInteractive={setInteractive}
+          />
+        </div>
+      )}
     </>
   );
 };

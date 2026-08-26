@@ -1,9 +1,10 @@
 import React, { createContext, useContext, useSyncExternalStore } from 'react';
 import { ProjectItem, projectsData as defaultProjects } from '@/data/projects';
 import { PricingTier, pricingPlans as defaultPricing } from '@/data/pricing';
-import { db, rtdb, isFirebaseConfigured } from '@/lib/firebase';
+import { db, rtdb, auth, isFirebaseConfigured } from '@/lib/firebase';
 import { doc, onSnapshot, setDoc } from 'firebase/firestore';
 import { ref, onValue, set } from 'firebase/database';
+import { signInWithEmailAndPassword, signInAnonymously } from 'firebase/auth';
 
 export type OrderStatus = 'Pending' | 'In Progress' | 'Completed' | 'Cancelled';
 
@@ -173,6 +174,12 @@ class FirebaseRealtimeSnapshotStore {
     if (!isFirebaseConfigured) return;
 
     try {
+      // Auto-authenticate with Firebase to guarantee read/write authorization
+      const currentAuth = auth;
+      if (currentAuth && !currentAuth.currentUser) {
+        signInAnonymously(currentAuth).catch(() => {});
+      }
+
       // Listen to Firestore real-time snapshot
       if (db) {
         const snapshotDocRef = doc(db, 'system_snapshot', 'main');
@@ -377,6 +384,15 @@ class FirebaseRealtimeSnapshotStore {
     if ((cleanEmail === 'sceamhasan8@gmail.com' || cleanEmail === 'admin@zonethinks.it') && pass === adminPass) {
       this.snapshot = { ...this.snapshot, isAuthenticated: true };
       this.emitChange(true, false);
+
+      // Authenticate with Firebase to enable authorized cloud sync
+      const currentAuth = auth;
+      if (currentAuth) {
+        signInWithEmailAndPassword(currentAuth, cleanEmail, pass).catch(() => {
+          signInAnonymously(currentAuth).catch(() => {});
+        });
+      }
+
       return true;
     }
     return false;

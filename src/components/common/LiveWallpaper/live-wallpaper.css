@@ -1,6 +1,6 @@
 /* ====================================================================
    LIVE WALLPAPER SYSTEM (ZoneThinks.IT)
-   Ultra-High Performance 120 FPS Live Wallpaper Styles
+   Ultra-High Performance 120 FPS Silky-Smooth GPU Hardware Layering
    ==================================================================== */
 
 .live-wallpaper-root {
@@ -13,10 +13,14 @@
   overflow: hidden;
   contain: strict;
   isolation: isolate;
-  background-color: var(--bg-ambient-base-1, #070a14);
-  transition: background-color 0.5s ease-out;
+  background-color: var(--bg-ambient-base-1, #F8FAFC);
+  transition: background-color 0.4s ease-out;
   transform: translateZ(0);
   backface-visibility: hidden;
+}
+
+.dark .live-wallpaper-root {
+  background-color: var(--bg-ambient-base-1, #070A14);
 }
 
 /* Layer 1: Ambient Atmospheric Base with Dual-Sided Balanced Radial Depth */
@@ -24,44 +28,49 @@
   position: absolute;
   inset: 0;
   background: 
-    radial-gradient(ellipse 70% 60% at 10% 20%, var(--bg-ambient-base-2, rgba(10, 16, 32, 0.95)) 0%, transparent 70%),
-    radial-gradient(ellipse 70% 60% at 90% 20%, var(--bg-ambient-base-3, rgba(13, 16, 32, 0.92)) 0%, transparent 70%),
-    radial-gradient(ellipse 70% 60% at 10% 80%, var(--bg-ambient-base-3, rgba(13, 16, 32, 0.92)) 0%, transparent 70%),
-    radial-gradient(ellipse 70% 60% at 90% 80%, var(--bg-ambient-base-2, rgba(10, 16, 32, 0.95)) 0%, transparent 70%),
-    linear-gradient(180deg, var(--bg-ambient-base-1, #070a14) 0%, rgba(8, 12, 24, 0.96) 50%, var(--bg-ambient-base-1, #070a14) 100%);
+    radial-gradient(ellipse 70% 60% at 10% 20%, var(--bg-ambient-base-2, #F1F6FE) 0%, transparent 70%),
+    radial-gradient(ellipse 70% 60% at 90% 20%, var(--bg-ambient-base-3, #FAF8FF) 0%, transparent 70%),
+    radial-gradient(ellipse 70% 60% at 10% 80%, var(--bg-ambient-base-3, #FAF8FF) 0%, transparent 70%),
+    radial-gradient(ellipse 70% 60% at 90% 80%, var(--bg-ambient-base-2, #F1F6FE) 0%, transparent 70%),
+    linear-gradient(180deg, var(--bg-ambient-base-1, #F8FAFC) 0%, var(--bg-ambient-base-2, #F1F6FE) 50%, var(--bg-ambient-base-1, #F8FAFC) 100%);
   opacity: 0.98;
   pointer-events: none;
   contain: strict;
+  transition: background 0.4s ease;
+}
+
+.dark .live-wallpaper-base-gradient {
+  background: 
+    radial-gradient(ellipse 70% 60% at 10% 20%, rgba(10, 16, 32, 0.95) 0%, transparent 70%),
+    radial-gradient(ellipse 70% 60% at 90% 20%, rgba(13, 16, 32, 0.92) 0%, transparent 70%),
+    radial-gradient(ellipse 70% 60% at 10% 80%, rgba(13, 16, 32, 0.92) 0%, transparent 70%),
+    radial-gradient(ellipse 70% 60% at 90% 80%, rgba(10, 16, 32, 0.95) 0%, transparent 70%),
+    linear-gradient(180deg, #070a14 0%, rgba(8, 12, 24, 0.96) 50%, #070a14 100%);
 }
 
 /* Layer 2: Cyber Circuit / Tech Grid with Dual-Sided Perspective */
 .live-wallpaper-cyber-grid {
   position: absolute;
-  inset: -60px;
-  width: calc(100% + 120px);
-  height: calc(100% + 120px);
+  inset: -30px;
+  width: calc(100% + 60px);
+  height: calc(100% + 60px);
   background-image: 
-    linear-gradient(to right, var(--bg-ambient-grid, rgba(0, 242, 254, 0.035)) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--bg-ambient-grid, rgba(0, 242, 254, 0.035)) 1px, transparent 1px);
+    linear-gradient(to right, var(--bg-ambient-grid, rgba(14, 116, 144, 0.035)) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--bg-ambient-grid, rgba(14, 116, 144, 0.035)) 1px, transparent 1px);
   background-size: 54px 54px;
   mask-image: radial-gradient(ellipse 90% 85% at 50% 50%, black 35%, rgba(0, 0, 0, 0.35) 75%, transparent 98%);
   -webkit-mask-image: radial-gradient(ellipse 90% 85% at 50% 50%, black 35%, rgba(0, 0, 0, 0.35) 75%, transparent 98%);
-  animation: liveGridSlowPan 90s linear infinite;
   pointer-events: none;
-  will-change: transform;
   transform: translateZ(0);
 }
 
-@keyframes liveGridSlowPan {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-  100% {
-    transform: translate3d(54px, 54px, 0);
-  }
+.dark .live-wallpaper-cyber-grid {
+  background-image: 
+    linear-gradient(to right, var(--bg-ambient-grid, rgba(0, 242, 254, 0.032)) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--bg-ambient-grid, rgba(0, 242, 254, 0.032)) 1px, transparent 1px);
 }
 
-/* Layer 3: Interactive Canvas (Full Viewport Coverage) */
+/* Layer 3: Interactive Canvas */
 .live-wallpaper-canvas {
   position: absolute;
   inset: 0;
@@ -73,8 +82,8 @@
 }
 
 /* --------------------------------------------------------------------
-   LAYER 4: BALANCED DUAL-SIDED VOLUMETRIC AURORA GLOWS (LEFT & RIGHT)
-   GPU-Accelerated with translate3d and hardware layering
+   LAYER 4: HARDWARE-ACCELERATED ULTRA-LIGHTWEIGHT AMBIENT GLOWS
+   Direct radial gradients with zero heavy filter recalculation
    -------------------------------------------------------------------- */
 
 .live-wallpaper-glow-left-top,
@@ -86,150 +95,64 @@
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
-  will-change: transform;
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
 }
 
 /* LEFT FLANK GLOWS */
 .live-wallpaper-glow-left-top {
-  top: -60px;
-  left: -60px;
-  width: 45vw;
-  max-width: 580px;
-  height: 420px;
-  background: radial-gradient(circle, var(--bg-orb-cyan, rgba(0, 242, 254, 0.16)) 0%, rgba(0, 242, 254, 0) 70%);
-  filter: blur(75px);
-  animation: liveGlowFloatLeft 22s ease-in-out infinite alternate;
+  top: -40px;
+  left: -40px;
+  width: 40vw;
+  max-width: 500px;
+  height: 380px;
+  background: radial-gradient(circle, var(--bg-orb-cyan, rgba(6, 182, 212, 0.12)) 0%, rgba(6, 182, 212, 0) 70%);
 }
 
 .live-wallpaper-glow-left-mid {
   top: 40%;
-  left: -80px;
-  width: 40vw;
-  max-width: 480px;
-  height: 400px;
-  background: radial-gradient(circle, var(--bg-orb-purple, rgba(139, 92, 246, 0.14)) 0%, rgba(139, 92, 246, 0) 70%);
-  filter: blur(80px);
-  animation: liveGlowFloatLeftMid 26s ease-in-out infinite alternate;
+  left: -60px;
+  width: 35vw;
+  max-width: 420px;
+  height: 350px;
+  background: radial-gradient(circle, var(--bg-orb-purple, rgba(139, 92, 246, 0.10)) 0%, rgba(139, 92, 246, 0) 70%);
 }
 
 .live-wallpaper-glow-left-bottom {
-  bottom: -60px;
-  left: -50px;
-  width: 45vw;
-  max-width: 520px;
-  height: 400px;
-  background: radial-gradient(circle, var(--bg-orb-teal, rgba(20, 184, 166, 0.13)) 0%, rgba(20, 184, 166, 0) 70%);
-  filter: blur(75px);
-  animation: liveGlowFloatLeftBottom 28s ease-in-out infinite alternate;
+  bottom: -40px;
+  left: -40px;
+  width: 40vw;
+  max-width: 450px;
+  height: 350px;
+  background: radial-gradient(circle, var(--bg-orb-teal, rgba(20, 184, 166, 0.10)) 0%, rgba(20, 184, 166, 0) 70%);
 }
 
 /* RIGHT FLANK GLOWS */
 .live-wallpaper-glow-right-top {
-  top: -60px;
-  right: -60px;
-  width: 45vw;
-  max-width: 580px;
-  height: 420px;
-  background: radial-gradient(circle, var(--bg-orb-purple, rgba(139, 92, 246, 0.16)) 0%, rgba(139, 92, 246, 0) 70%);
-  filter: blur(75px);
-  animation: liveGlowFloatRight 24s ease-in-out infinite alternate;
+  top: -40px;
+  right: -40px;
+  width: 40vw;
+  max-width: 500px;
+  height: 380px;
+  background: radial-gradient(circle, var(--bg-orb-purple, rgba(139, 92, 246, 0.12)) 0%, rgba(139, 92, 246, 0) 70%);
 }
 
 .live-wallpaper-glow-right-mid {
   top: 45%;
-  right: -80px;
-  width: 40vw;
-  max-width: 480px;
-  height: 400px;
-  background: radial-gradient(circle, var(--bg-orb-cyan, rgba(0, 242, 254, 0.14)) 0%, rgba(0, 242, 254, 0) 70%);
-  filter: blur(80px);
-  animation: liveGlowFloatRightMid 27s ease-in-out infinite alternate;
+  right: -60px;
+  width: 35vw;
+  max-width: 420px;
+  height: 350px;
+  background: radial-gradient(circle, var(--bg-orb-cyan, rgba(6, 182, 212, 0.10)) 0%, rgba(6, 182, 212, 0) 70%);
 }
 
 .live-wallpaper-glow-right-bottom {
-  bottom: -60px;
-  right: -50px;
-  width: 45vw;
-  max-width: 520px;
-  height: 400px;
-  background: radial-gradient(circle, var(--bg-orb-violet, rgba(168, 85, 247, 0.14)) 0%, rgba(168, 85, 247, 0) 70%);
-  filter: blur(75px);
-  animation: liveGlowFloatRightBottom 30s ease-in-out infinite alternate;
-}
-
-/* Float Animations */
-@keyframes liveGlowFloatLeft {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(30px, 20px, 0) scale(1.05);
-  }
-  100% {
-    transform: translate3d(-15px, 30px, 0) scale(0.97);
-  }
-}
-
-@keyframes liveGlowFloatLeftMid {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(25px, -20px, 0) scale(1.04);
-  }
-  100% {
-    transform: translate3d(-10px, 15px, 0) scale(0.96);
-  }
-}
-
-@keyframes liveGlowFloatLeftBottom {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(20px, -25px, 0) scale(1.05);
-  }
-  100% {
-    transform: translate3d(-15px, 10px, 0) scale(0.96);
-  }
-}
-
-@keyframes liveGlowFloatRight {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(-30px, 20px, 0) scale(1.05);
-  }
-  100% {
-    transform: translate3d(15px, 30px, 0) scale(0.97);
-  }
-}
-
-@keyframes liveGlowFloatRightMid {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(-25px, -20px, 0) scale(1.04);
-  }
-  100% {
-    transform: translate3d(10px, 20px, 0) scale(0.96);
-  }
-}
-
-@keyframes liveGlowFloatRightBottom {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(-20px, -25px, 0) scale(1.05);
-  }
-  100% {
-    transform: translate3d(15px, 15px, 0) scale(0.96);
-  }
+  bottom: -40px;
+  right: -40px;
+  width: 40vw;
+  max-width: 450px;
+  height: 350px;
+  background: radial-gradient(circle, var(--bg-orb-violet, rgba(168, 85, 247, 0.10)) 0%, rgba(168, 85, 247, 0) 70%);
 }
 
 /* --------------------------------------------------------------------
@@ -247,19 +170,19 @@
 }
 
 .live-wallpaper-hud-card {
-  background: rgba(14, 18, 28, 0.88);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(0, 242, 254, 0.25);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.65), 0 0 20px rgba(0, 242, 254, 0.15);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(2, 132, 199, 0.25);
+  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.1);
   border-radius: 18px;
-  transition: all 0.25s ease-out;
+  transition: all 0.2s ease-out;
 }
 
-:root:not(.dark) .live-wallpaper-hud-card {
-  background: rgba(255, 255, 255, 0.94);
-  border: 1px solid rgba(2, 132, 199, 0.3);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.12), 0 0 18px rgba(2, 132, 199, 0.1);
+.dark .live-wallpaper-hud-card {
+  background: rgba(14, 18, 28, 0.90);
+  border: 1px solid rgba(0, 242, 254, 0.25);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.65), 0 0 20px rgba(0, 242, 254, 0.15);
 }
 
 /* Minimized HUD trigger button */
@@ -267,48 +190,33 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 14px;
+  padding: 7px 13px;
   border-radius: 9999px;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.02em;
-  background: rgba(14, 18, 28, 0.88);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(2, 132, 199, 0.3);
+  color: #0284C7;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+.dark .live-wallpaper-hud-trigger {
+  background: rgba(14, 18, 28, 0.90);
   border: 1px solid rgba(0, 242, 254, 0.3);
   color: #00F2FE;
-  cursor: pointer;
-  transition: transform 0.2s ease, border-color 0.2s ease;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
-:root:not(.dark) .live-wallpaper-hud-trigger {
-  background: rgba(255, 255, 255, 0.94);
-  border: 1px solid rgba(2, 132, 199, 0.35);
-  color: #0284C7;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-}
-
 .live-wallpaper-hud-trigger:hover {
-  transform: translateY(-2px);
-  border-color: rgba(0, 242, 254, 0.6);
+  transform: translateY(-1px);
 }
 
-/* Reduced Motion Mode */
-@media (prefers-reduced-motion: reduce) {
-  .live-wallpaper-cyber-grid,
-  .live-wallpaper-glow-left-top,
-  .live-wallpaper-glow-left-mid,
-  .live-wallpaper-glow-left-bottom,
-  .live-wallpaper-glow-right-top,
-  .live-wallpaper-glow-right-mid,
-  .live-wallpaper-glow-right-bottom {
-    animation: none !important;
-    transform: none !important;
-  }
-}
-
-/* Mobile responsive adjustments - Super lightweight blur & performance */
+/* Mobile optimizations: Zero heavy animation load on low-power devices */
 @media (max-width: 768px) {
   .live-wallpaper-hud {
     bottom: 16px;
@@ -321,9 +229,8 @@
   .live-wallpaper-glow-right-top,
   .live-wallpaper-glow-right-mid,
   .live-wallpaper-glow-right-bottom {
-    width: 75vw;
-    height: 220px;
-    filter: blur(40px);
-    animation-duration: 35s;
+    width: 60vw;
+    height: 180px;
+    opacity: 0.7;
   }
 }

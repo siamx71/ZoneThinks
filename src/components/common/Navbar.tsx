@@ -17,6 +17,7 @@ const navItems: NavItem[] = [
   { label: 'Home', href: '/' },
   { label: 'Services', href: '/services' },
   { label: 'Projects', href: '/projects' },
+  { label: 'Friday', href: '/ai-assistant' },
   { label: 'Case Studies', href: '/case-studies' },
   {
     label: 'Company',
@@ -166,13 +167,18 @@ export const Navbar: React.FC = () => {
                 key={item.href}
                 to={item.href}
                 className={cn(
-                  'relative px-3.5 py-1.5 text-xs font-semibold rounded-full transition-colors font-heading tracking-wide',
+                  'relative px-3.5 py-1.5 text-xs font-semibold rounded-full transition-colors font-heading tracking-wide flex items-center gap-1.5',
                   isActive
                     ? 'text-brand-cyan bg-brand-cyan/10'
                     : 'text-text-secondary hover:text-text-primary hover:bg-surface-subtle/50 dark:text-slate-300 dark:hover:text-white dark:hover:bg-white/5'
                 )}
               >
-                {item.label}
+                <span>{item.label}</span>
+                {item.badge && (
+                  <span className="text-[9px] font-mono px-1.5 py-0.5 rounded-full bg-brand-cyan text-black font-bold uppercase tracking-wider shadow-glow-cyan">
+                    {item.badge}
+                  </span>
+                )}
                 {isActive && (
                   <motion.div
                     layoutId="activeNavPill"
@@ -312,7 +318,14 @@ export const Navbar: React.FC = () => {
                         : 'text-text-secondary hover:bg-surface-subtle/50 dark:text-slate-200 dark:hover:bg-white/5'
                     )}
                   >
-                    <span>{item.label}</span>
+                    <span className="flex items-center gap-2">
+                      {item.label}
+                      {item.badge && (
+                        <span className="text-[9px] font-mono px-1.5 py-0.5 rounded-full bg-brand-cyan text-black font-bold uppercase">
+                          {item.badge}
+                        </span>
+                      )}
+                    </span>
                     {isActive && <Sparkles className="w-4 h-4 text-brand-cyan" />}
                   </Link>
                 );

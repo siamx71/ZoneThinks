@@ -117,10 +117,19 @@ export const LiveWallpaperCanvas: React.FC<LiveWallpaperCanvasProps> = ({
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
-    // Optimized DPR: 1.0 on mobile and touch devices, 1.5 max on desktop for silky 120fps with minimal GPU fillrate
-    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    const isTouchDevice = typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0);
     const isMobileScreen = width < 768;
-    const dpr = isTouchDevice || isMobileScreen ? 1.0 : Math.min(window.devicePixelRatio || 1, 1.5);
+
+    // Low-end device detection (CPU cores <= 4, RAM <= 4GB, or small budget mobile)
+    const isLowEndDevice = 
+      (typeof navigator !== 'undefined' && (
+        (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4) ||
+        ((navigator as any).deviceMemory && (navigator as any).deviceMemory <= 4)
+      )) ||
+      width < 640;
+
+    // Optimized DPR: 1.0 on low-end and mobile, 1.25 max on high-end desktop
+    const dpr = isLowEndDevice || isTouchDevice || isMobileScreen ? 1.0 : Math.min(window.devicePixelRatio || 1, 1.25);
 
     canvas.width = width * dpr;
     canvas.height = height * dpr;
@@ -132,27 +141,30 @@ export const LiveWallpaperCanvas: React.FC<LiveWallpaperCanvasProps> = ({
     const speedMap: Record<WallpaperSpeed, number> = {
       slow: 0.6,
       normal: 1.0,
-      fast: 1.6,
+      fast: 1.5,
     };
     const currentSpeed = speedMap[speed] || 1.0;
 
     // Density multiplier
     const densityMap: Record<WallpaperDensity, number> = {
-      low: 0.6,
-      medium: 1.0,
-      ultra: 1.4,
+      low: 0.4,
+      medium: 0.7,
+      ultra: 1.0,
     };
-    const densityMult = densityMap[density] || 1.0;
+    const densityMult = densityMap[density] || 0.7;
 
-    // Device-adaptive particle counts
+    // Ultra-optimized device-adaptive particle counts
     const area = width * height;
     let particleCount: number;
-    if (isMobileScreen) {
-      // 16 to 28 particles on mobile for 120 FPS performance
-      particleCount = Math.max(16, Math.min(Math.floor((area / 32000) * densityMult), 28));
+    if (isLowEndDevice) {
+      // 4 to 6 ultra-light particles for zero lag on budget phones
+      particleCount = Math.max(4, Math.min(Math.floor((area / 70000) * densityMult), 6));
+    } else if (isMobileScreen) {
+      // 8 to 12 particles on mobile for effortless 120 FPS performance
+      particleCount = Math.max(8, Math.min(Math.floor((area / 50000) * densityMult), 12));
     } else {
-      // 36 to 68 particles on desktop for balanced density and 120 FPS
-      particleCount = Math.max(36, Math.min(Math.floor((area / 24000) * densityMult), 68));
+      // 20 to 32 particles on desktop for balanced density and true 120 FPS
+      particleCount = Math.max(20, Math.min(Math.floor((area / 38000) * densityMult), 32));
     }
 
     // Theme color palettes

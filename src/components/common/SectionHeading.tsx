@@ -15,7 +15,6 @@ interface SectionHeadingProps {
 
 export const SectionHeading: React.FC<SectionHeadingProps> = ({
   badge,
-  badgeIcon,
   title,
   highlightedText,
   subtitle,
@@ -34,14 +33,12 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, margin: '-50px' }}
-      className={cn('flex flex-col max-w-3xl mb-12 sm:mb-16', alignmentClasses[align], className)}
+      className={cn('flex flex-col max-w-3xl mb-10 sm:mb-14', alignmentClasses[align], className)}
     >
       {badge && (
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-brand-cyan/10 border border-brand-cyan/25 text-brand-cyan mb-4 backdrop-blur-md">
-          <span className="w-1.5 h-1.5 rounded-full bg-brand-cyan animate-ping" />
-          {badgeIcon}
-          <span>{badge}</span>
-        </div>
+        <span className="text-xs font-mono font-semibold uppercase tracking-widest text-brand-cyan mb-3">
+          // {badge}
+        </span>
       )}
 
       <h2 className="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-text-primary tracking-tight leading-[1.15]">
@@ -59,3 +56,5 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
     </motion.div>
   );
 };
+
+export default SectionHeading;

@@ -174,6 +174,12 @@ export const Footer: React.FC = () => {
                   <Link to="/services" className={footerLinkClass}>{s}</Link>
                 </li>
               ))}
+              <li>
+                <Link to="/ai-assistant" className={cn(footerLinkClass, "flex items-center gap-1.5 text-brand-cyan font-bold")}>
+                  <span>✨ Friday AI Consultant</span>
+                  <span className="px-1.5 py-0.2 text-[9px] rounded bg-brand-cyan text-black font-mono font-bold">VOICE</span>
+                </Link>
+              </li>
             </ul>
           </div>
 

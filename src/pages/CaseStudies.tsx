@@ -27,7 +27,7 @@ export const CaseStudies: React.FC = () => {
       />
 
       {/* Hero */}
-      <section className="pt-12 pb-16 relative">
+      <section className="pt-4 pb-8 sm:pt-6 sm:pb-10 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             variants={staggerContainer(0.1, 0)}
@@ -35,10 +35,9 @@ export const CaseStudies: React.FC = () => {
             animate="show"
             className="max-w-3xl"
           >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-brand-cyan/10 border border-brand-cyan/25 text-brand-cyan mb-6">
-              <BarChart3 className="w-3.5 h-3.5" />
-              <span>Proven ROI & Data-Driven Outcomes</span>
-            </div>
+            <span className="text-xs font-mono font-semibold uppercase tracking-widest text-brand-cyan mb-3 block">
+              // Client Case Studies & Metrics
+            </span>
 
             <h1 className="font-heading font-black text-4xl sm:text-6xl text-text-primary tracking-tight leading-tight">
               Data-Backed <span className="text-gradient-cyan">Transformation</span> Stories.
